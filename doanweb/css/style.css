@@ -1,0 +1,147 @@
+body {
+    font-family: Tahoma;
+    font-size: 13px;
+    background: url(../images/body.ipg);
+    margin:  0px;
+    padding: 0px;
+}
+ul{
+    margin: 0px;
+    padding: 0px;
+}
+ul li {
+    list-style: none;
+}
+#header{
+    background: url("../images/body.png") repeat-x;
+    height: 200px;
+    background-color: #cccccc; 
+}
+#header2{
+    height: 200px;
+}
+#header_margin{
+    width: 1000px;
+    margin: 0px auto;
+    height: 151px;
+}
+#header_margin .header_margin_left {
+    float: left;
+    height: 151px;
+}
+#header_margin #logo{
+    width: 400px;
+}
+#header_margin #logo img{
+    width: 400px;
+    height: 120px;
+    margin-top: 00px;
+}
+#header_margin #from_search {
+    margin-top: 30px;
+    width: 400px;
+    position: relative;
+}
+#header_margin #from_search input{
+    border: 1px solid #1154a4;
+    background: #c3ecf8;
+    height: 34px;
+    width: 340px;
+}
+#header_margin #from_search button{
+    background: url("../images/btn_search.png");
+    background-repeat: repeat-x; 
+    width: 160px;
+    height: 43px;
+    position: absolute;
+    top: -3px;
+    right: -105px;
+    padding: 2px 6px 3px;
+}
+#slider_menu {
+    background: url("../images/bgslide.jpg");
+    height: 300px;
+}
+#slider_menu_margin {
+    margin: 0px auto;
+    height: 467px;
+    width: 1000px;
+}
+#slider_menu_margin #menu{
+    height: 40px;
+    background: #1154a4;
+    width: 1000px;
+}
+#slider_menu_margin #menu ul li{
+    float: left;
+
+}
+#slider_menu_margin #menu ul li a{
+    float: left;
+    color: aliceblue;
+    text-decoration:  none;
+    line-height: 40px;
+    background: url("/images/Line.png") no-repeat right;
+    padding:  0px 15px 0px 15px;
+}
+#slider_menu_margin #menu ul li a:hover{
+    background: #eb2629;
+}
+#main {
+    margin: 2px auto;
+    width:  1000px;
+}
+#main #left {
+    float: left;
+    width: 845px;
+    min-height: 600px;
+    background: #c3ecf8;
+}
+#main #left .block {
+    width: 845px;
+    padding-top:0px;
+}
+#main #left .block .block_sidebar{
+    background: #1154a4;
+    width: 845px;
+}
+#main #left .block .block_sidebar h3 {
+    color: #FFF;
+    margin-left: 0px;
+    text-indent: 30px;
+    margin-top: 8px;
+    height: 35px; 
+    line-height: 35px;
+    
+}
+#main #left .block .block_sidebar a.readmore{
+    float: right;
+    margin-right: 20px;
+    margin-top: -42px;
+    color: #093c79;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+}
+#left .block ul li{
+    float: left;
+    width: 200px;
+    text-align: center;
+    padding-top: 10px;
+}
+#left .block ul li img{
+    width: 160px;
+}
+#left .block ul li h3{
+    color: #093c79;
+    margin-top: -59px;
+}
+#left .block ul li p{
+    color: firebrick;
+}
+#main #right {
+    float: right;
+    width: 150px;
+    min-height: 600px;
+    background: #111111;
+}
