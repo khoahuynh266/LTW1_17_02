@@ -19,12 +19,12 @@
 							<button class="button add-cart" type="button">
 								<?php if (!$currentUser) : ?>
 									<li class="nav-item <?php echo ($page == 'login') ? 'active' : '' ?>">
-									<a  href="login.php">Đăng Nhập Để Mua Hàng</a>
+										<a href="login.php">Đăng Nhập Để Mua Hàng</a>
 									</li>
 							</button>
 							<?php endif ?>
 							<button class="button detail" type="button">
-								<a href="chitiet.php?id=<?php echo $row['id'] ?>">Xem Thông Tin </a>
+								<a href="xemdienthoaitheohang.php?id=<?php echo $row['id'] ?>">Xem Thông Tin </a>
 							</button> <br><br><br><br>
 						</div>						
 					</div>

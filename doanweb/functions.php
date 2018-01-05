@@ -58,6 +58,24 @@ function Seach($query){
   global $db;
   $stmt = $db->prepare("SELECT * FROM san_pham WHERE ten like '%".$query."%' ");
   $stmt->execute(array($query));
-  $user = $stmt->fetch(PDO::FETCH_ASSOC);
-  return $user;
+  $posts = $stmt->fetch(PDO::FETCH_ASSOC);
+  return $posts;
+}
+
+function ChiTietSanPham(){
+  global $db;
+  $id=$_GET['id'];
+  $stmt = $db->prepare("SELECT * from san_pham  WHERE id = $id");
+  $stmt->execute();
+  $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  return $posts;
+}
+
+function DSDienThoaiTheoHang(){
+  global $db;
+  $id=$_GET['id'];
+  $stmt = $db->prepare("SELECT * from san_pham  WHERE id_nsx = $id");
+  $stmt->execute();
+  $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  return $posts;
 }

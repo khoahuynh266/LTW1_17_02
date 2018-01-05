@@ -31,7 +31,7 @@ require_once 'init.php';
 							</button>
 							<?php endif ?>
 							<button class="button detail" type="button">
-								<a href="chitiet.php?id=<?php echo $row['id'] ?>">Xem Thông Tin </a>
+								<a href="chitiet.php?id=<?php echo $row['id'] ?>">Xem Chi Tiết</a>
 							</button> <br><br><br><br>
 						</div>						
 					</div>

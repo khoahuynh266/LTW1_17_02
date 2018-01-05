@@ -22,11 +22,11 @@
             <li class="nav-item <?php echo ($page == 'index') ? 'active' : '' ?>">
               <a class="nav-link" href="index.php">Trang chủ<span class="sr-only">(current)</span></a>
 
-            <li class="nav-item <?php echo ($page == 'register') ? 'active' : '' ?>">
+            <li class="nav-item <?php echo ($page == 'listproduct') ? 'active' : '' ?>">
               <a class="nav-link" href="listproduct.php">Danh Sách Sản Phẩm</a>
 			  
-			 <li class="nav-item <?php echo ($page == 'listproduct') ? 'active' : '' ?>">
-              <a class="nav-link" href="manufacturerlist.php">Danh Sách Hãng Sản Xuất</a>
+			 <li class="nav-item <?php echo ($page == 'manufacturerlist') ? 'active' : '' ?>">
+              <a class="nav-link" href="manufacturerlist.php">Các Hãng Điện Thoại</a>
 			  
             <?php if (!$currentUser) : ?>
             <li class="nav-item <?php echo ($page == 'register') ? 'active' : '' ?>">

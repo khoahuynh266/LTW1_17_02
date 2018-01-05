@@ -1,25 +1,16 @@
 <?php 
 	require_once 'init.php';
-	$resultSet = SelectSanPham();
+	$resultSet = DSDienThoaiTheoHang();
 ?>
 <?php include 'header.php' ?> <br>
 
-<div class="Seach"  align='right'>
-<h4>Tìm kiếm <br>
-	<form>
-		<input type="hidden" name="thamso" value="tim_kiem" >
-		<input type="text" name="tu_khoa" value="" style="margin-top:9px;margin-bottom:8px;" > 
-		<input type="submit" name = "Seach" value="Tìm" >
-	</form>
-</div>
-
-<h3 class="title">Danh Sách Sản Phẩm</h3>
+<h3 class="title">Danh Sách Điện Thoại Theo Hãng</h3>
 	<ul id="new">
 		<li>
 			<div class="row">
 				<?php foreach($resultSet as $row): ?>
 				<div class="col-sm-4">
-					<div class="products"  align='center'>					
+					<div class="products"  align='center'>
 						<div class="thumbnail">
 							<a href="chitiet.php?id=<?php echo $row['id']?>"><img src="<?php echo $row['image'] ?>" alt="TenSanPham"></a>
 						</div>						
