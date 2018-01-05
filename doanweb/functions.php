@@ -40,7 +40,7 @@ function selectSanPhamMoi(){
 
 function SelectNhaSanXuat(){
 	global $db;
-	$stmt = $db->prepare ("Select * from danh_sach_nha_san_xuat");
+	$stmt = $db->prepare ("Select * from nha_san_xuat");
 	$stmt->execute();
 	$posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	return $posts;
@@ -76,6 +76,14 @@ function DSDienThoaiTheoHang(){
   global $db;
   $id=$_GET['id'];
   $stmt = $db->prepare("SELECT * from san_pham  WHERE id_nsx = $id");
+  $stmt->execute();
+  $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  return $posts;
+}
+function ChiTietNhaSanXuat(){
+  global $db;
+  $id=$_GET['id'];
+  $stmt = $db->prepare("SELECT * from nha_san_xuat  WHERE id = $id");
   $stmt->execute();
   $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
   return $posts;
