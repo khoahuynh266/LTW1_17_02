@@ -54,11 +54,12 @@ function SelectSanPham(){
   return $posts;
 }
 
-function Seach($query){
+function Search(){
   global $db;
-  $stmt = $db->prepare("SELECT * FROM san_pham WHERE ten like '%".$query."%' ");
-  $stmt->execute(array($query));
-  $posts = $stmt->fetch(PDO::FETCH_ASSOC);
+  $id=$_GET['term'];
+  $stmt = $db->prepare("SELECT * from san_pham  WHERE tensp like '%$id%'");
+  $stmt->execute();
+  $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
   return $posts;
 }
 

@@ -1,18 +1,10 @@
 <?php 
 	require_once 'init.php';
-	$resultSet = SelectSanPham();
+	$resultSet = Search();
 ?>
 <?php include 'header.php' ?> <br>
+
 <h3 class="title">Danh Sách Sản Phẩm</h3>
-
-<div class="Seach"  align='right'>
-	<form action="Search.php" method="get"> 
-		Search: <input type="text" name="term" /><br /> 
-		<input type="submit" value="Tìm Kiếm" /> 
-	</form> 
-</div>
-
-
 	<ul id="new">
 		<li>
 			<div class="row">
@@ -20,7 +12,7 @@
 				<div class="col-sm-4">
 					<div class="products"  align='center'>					
 						<div class="thumbnail">
-							<a href="chitiet.php?id=<?php echo $row['id']?>"><img src="<?php echo $row['image'] ?>" alt="TenSanPham"></a>
+							<a href="chitiet.php?id=<?php echo $row['tensp']?>"><img src="<?php echo $row['image'] ?>" alt="TenSanPham"></a>
 						</div>						
 						<div class="tensanpham"><?php echo $row['tensp'] ?></div>
 						<div class="btn-group-vertical">
