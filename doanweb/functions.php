@@ -62,13 +62,29 @@ function SelectNhaSanXuat(){
 	return $posts;
 }
 
-function SelectSanPham(){	
+function SelectAllSanPham(){	
   global $db;
-  $stmt = $db->prepare("SELECT * from san_pham");
+  $stmt = $db->prepare("SELECT * from san_pham  group by id, tensp, loai, id_nsx, gia, soluong, mota, image, xuatsu, created_at, luotxem order by created_at");
   $stmt->execute();
   $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
   return $posts;
 }
+function SelectSanPham($offset,$limit){	
+  global $db;
+  $current_page=$_GET['page'];
+  $stmt = $db->prepare("SELECT * from san_pham  group by id, tensp, loai, id_nsx, gia, soluong, mota, image, xuatsu, created_at, luotxem order by created_at desc LIMIT $offset, $limit");
+  $stmt->execute(array($offset, $limit));
+  $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  return $posts;
+}
+
+function countTotalRecord(){
+  global $db;
+  $stmt = $db->prepare("SELECT COUNT(id)  from san_pham");
+  $stmt->execute();
+  $total_records = $stmt->fetch(PDO::FETCH_ASSOC);
+  return $total_records;
+}  
 
 function Search(){
   global $db;
