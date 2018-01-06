@@ -30,10 +30,60 @@ function updateUserPassword($userId, $hashPassword) {
   $stmt = $db->prepare("UPDATE users SET password = ? WHERE id = ?");
   $stmt->execute(array($hashPassword, $userId));
 }
-function selectSanPhamMoi()
-{	
+function selectSanPhamMoi(){	
   global $db;
   $stmt = $db->prepare("SELECT * from san_pham  group by id, tensp, loai, id_nsx, gia, soluong, mota, image, xuatsu, created_at, luotxem order by created_at desc limit 9");
+  $stmt->execute();
+  $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  return $posts;
+}
+
+function SelectNhaSanXuat(){
+	global $db;
+	$stmt = $db->prepare ("Select * from nha_san_xuat");
+	$stmt->execute();
+	$posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	return $posts;
+}
+
+function SelectSanPham(){	
+  global $db;
+  $stmt = $db->prepare("SELECT * from san_pham  group by id, tensp, loai, id_nsx, gia, soluong, mota, image, xuatsu, created_at, luotxem order by created_at");
+  $stmt->execute();
+  $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  return $posts;
+}
+
+function Search(){
+  global $db;
+  $id=$_GET['term'];
+  $stmt = $db->prepare("SELECT * from san_pham  WHERE tensp like '%$id%'");
+  $stmt->execute();
+  $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  return $posts;
+}
+
+function ChiTietSanPham(){
+  global $db;
+  $id=$_GET['id'];
+  $stmt = $db->prepare("SELECT * from san_pham  WHERE id = $id");
+  $stmt->execute();
+  $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  return $posts;
+}
+
+function DSDienThoaiTheoHang(){
+  global $db;
+  $id=$_GET['id'];
+  $stmt = $db->prepare("SELECT * from san_pham  WHERE id_nsx = $id");
+  $stmt->execute();
+  $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  return $posts;
+}
+function ChiTietNhaSanXuat(){
+  global $db;
+  $id=$_GET['id'];
+  $stmt = $db->prepare("SELECT * from nha_san_xuat  WHERE id = $id");
   $stmt->execute();
   $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
   return $posts;

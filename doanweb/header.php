@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Web Ban Hang</title>
+    <title>Web Bán Hàng</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -12,7 +12,7 @@
   <body>
     <div class="container">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Web Ban Hang</a>
+        <a class="navbar-brand" href="#">Web Bán Hàng</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -21,9 +21,13 @@
           <ul class="navbar-nav mr-auto">
             <li class="nav-item <?php echo ($page == 'index') ? 'active' : '' ?>">
               <a class="nav-link" href="index.php">Trang chủ<span class="sr-only">(current)</span></a>
-			    <li><a>Danh Sách Sản Phẩm</a></li>
-				<li><a>Danh Sách Nhà Sản Xuất</a></li>
-            </li>
+
+            <li class="nav-item <?php echo ($page == 'listproduct') ? 'active' : '' ?>">
+              <a class="nav-link" href="listproduct.php">Danh Sách Sản Phẩm</a>
+			  
+			 <li class="nav-item <?php echo ($page == 'manufacturerlist') ? 'active' : '' ?>">
+              <a class="nav-link" href="manufacturerlist.php">Các Hãng Điện Thoại</a>
+			  
             <?php if (!$currentUser) : ?>
             <li class="nav-item <?php echo ($page == 'register') ? 'active' : '' ?>">
               <a class="nav-link" href="register.php">Đăng ký</a>

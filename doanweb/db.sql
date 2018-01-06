@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo:Th12 28, 2017 lúc 06:46 PM
+-- Thời gian đã tạo: Th1 05, 2018 lúc 05:12 PM
 -- Phiên bản máy phục vụ: 10.1.28-MariaDB
 -- Phiên bản PHP: 7.1.10
 
@@ -95,17 +95,22 @@ CREATE TABLE `nha_san_xuat` (
   `ten` varchar(50) CHARACTER SET utf8 NOT NULL,
   `diachi` varchar(100) CHARACTER SET utf8 NOT NULL,
   `email` text CHARACTER SET utf8,
-  `phone` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL
+  `phone` varchar(16) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `images` varchar(256) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `nha_san_xuat`
 --
 
-INSERT INTO `nha_san_xuat` (`id`, `ten`, `diachi`, `email`, `phone`) VALUES
-(1, 'Sam Sung', 'China', 'SamSung@gmail', '01231456789'),
-(2, 'Oppo', 'China', 'Oppo@gmail', '01231456788'),
-(3, 'Apple', 'Usa', 'Apple@gmail', '01231456787');
+INSERT INTO `nha_san_xuat` (`id`, `ten`, `diachi`, `email`, `phone`, `images`) VALUES
+(1, 'Nokia', 'Karaportti 3, 02610 Espoo, Finland', 'support@nokia.com', '358 10 44 88 000', 'images/Nokia.jpg'),
+(2, 'SamSung', 'Seoul, Hàn Quốc', 'support@samsung.vn', '1800 588 890', 'images/SamSung.jpg'),
+(3, 'Apple', 'Cupertino, California', 'support@Apple.vn', '358 63 53 47 005', 'images/apple.jpg'),
+(4, 'Sony', 'Minato, Tokyo, Tōkyō, Nhật Bản', 'support@Sony.vn', '180 058 885', 'images/sony.jpg'),
+(5, 'Oppo', 'Đông Hoản, Trung Quốc', 'service@oppo.vn', '(028)38229844', 'images/Oppo.jpg'),
+(6, 'HTC', 'Tân Bắc, Đài Loan', 'support@htc.vn', '1900 555567', 'images/HTC.jpg'),
+(7, 'Xiaomi', 'Hải Điến, Bắc Kinh, Trung Quốc', 'support@Xiaomi.vn', '351 04 48 80 003', 'images/Xiaomi.jpg');
 
 -- --------------------------------------------------------
 
@@ -182,8 +187,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `fullname`, `email`, `password`, `type`) VALUES
-(1, 'Huỳnh anh khoa', 'yumiling1001@gmail.com', '123123123', 1),
-(2, 'admin', 'admin@gmail.com', 'admin', 1);
+(2, 'admin', 'admin@gmail.com', 'admin', 1),
+(3, 'Khoa huynh', 'yumiling1001@gmail.com', '$2y$10$hQSVhxhIWPJz91GMB2FGie7.Yjt9hpTDN8aAOZosb7ns8JmSGxkJe', NULL);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -252,7 +257,7 @@ ALTER TABLE `gio_hang`
 -- AUTO_INCREMENT cho bảng `nha_san_xuat`
 --
 ALTER TABLE `nha_san_xuat`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT cho bảng `san_pham`
@@ -264,7 +269,7 @@ ALTER TABLE `san_pham`
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
