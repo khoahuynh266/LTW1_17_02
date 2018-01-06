@@ -15,10 +15,9 @@
           <img src="images/logo.png" alt="Logo">
       </div>
       <div id="from_search">
-          <form method="" action="">
-              <input type="text" name="" 
-              value=""/>
-              <button></button>
+          <form  method="POST">
+              <input type="text_search" name="text_search" id="text_search"  placeholder="Tìm kiếm"  value=""/>
+              <button  type="submit"></button>
           </form>
       </div>
       </div>
@@ -28,7 +27,7 @@
           <div id="menu">
               <ul>
               
-                <li><a href="index1.php" title="">Trang chủ</a></li>
+                <li><a href="index.php" title="">Trang chủ</a></li>
                 <?php if (!$currentUser) : ?>
                             <li> <a href="register.php">Đăng ký</a></li>
                 <?php endif; ?>
@@ -41,6 +40,8 @@
                 <li><a href="" title="">Đăng xuất</a></li>
               </ul>
               <?php endif; ?>
+          </div>
+          <div id="slider">
           </div>
         </div>
     </div>

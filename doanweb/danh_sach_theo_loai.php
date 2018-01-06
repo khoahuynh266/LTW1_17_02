@@ -1,7 +1,7 @@
 <?php 
 	require_once 'init.php';
 	$id=$_GET['id'];
-	$resultSet = ChiTietSanPham($id);
+	$resultSet = selectTheoLoai($id);
 	$resultSet3 = selectLoaiSanPham();
 	$resultSet4 = selectNhaSanXuat();
 ?>
@@ -11,7 +11,7 @@
 		<div id="left">
 			<div class="block">
 				<div class="block_sidebar">
-					<h6 href="">Thông tin sản phẩm</h6>
+					<h6 href="">Danh sách sản phẩm theo loại</h6>
 				</div>
 				<?php foreach($resultSet as $row): ?>
 					<ul>
@@ -56,8 +56,5 @@
 				<?php endforeach; ?>
 			</div>
 		</div>
-</div>
-
-
-
+	</div>
 

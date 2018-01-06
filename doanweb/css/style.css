@@ -13,7 +13,7 @@ ul li {
     list-style: none;
 }
 #header{
-    background: url("../images/body.png") repeat-x;
+    background: url("../images/body.png") no-repeat;
     height: 200px;
     background-color: #cccccc; 
 }
@@ -59,8 +59,8 @@ ul li {
     padding: 2px 6px 3px;
 }
 #slider_menu {
-    background: url("../images/bgslide.jpg");
     height: 300px;
+    float: none;
 }
 #slider_menu_margin {
     margin: 0px auto;
@@ -71,6 +71,10 @@ ul li {
     height: 40px;
     background: #1154a4;
     width: 1000px;
+    clear: both;
+}
+#slider_menu_margin #slider{
+    clear: both;
 }
 #slider_menu_margin #menu ul li{
     float: left;
@@ -95,53 +99,91 @@ ul li {
     float: left;
     width: 845px;
     min-height: 600px;
-    background: #c3ecf8;
 }
 #main #left .block {
     width: 845px;
-    padding-top:0px;
+    padding-top:10px;
+    clear: both;
 }
 #main #left .block .block_sidebar{
     background: #1154a4;
-    width: 845px;
+    width: 840px;
 }
-#main #left .block .block_sidebar h3 {
+#main #left .block .block_sidebar h6 {
     color: #FFF;
     margin-left: 0px;
-    text-indent: 30px;
-    margin-top: 8px;
-    height: 35px; 
+    text-indent: 10px;
+    height: 32px; 
     line-height: 35px;
-    
 }
 #main #left .block .block_sidebar a.readmore{
     float: right;
     margin-right: 20px;
-    margin-top: -42px;
-    color: #093c79;
+    margin-top: -36px;
+    color: #ffffff;
     text-align: center;
     text-decoration: none;
     font-weight: bold;
 }
 #left .block ul li{
     float: left;
-    width: 200px;
-    text-align: center;
+    width: 211px;
+    text-align: left;
     padding-top: 10px;
 }
 #left .block ul li img{
     width: 160px;
 }
-#left .block ul li h3{
-    color: #093c79;
-    margin-top: -59px;
+#left .block ul li h5{
+    color: #404040;
+    background: transparent;
+    text-decoration: none;
+    outline: none;
+    cursor: pointer;
 }
 #left .block ul li p{
-    color: firebrick;
+    color:#f57224;
 }
+
 #main #right {
-    float: right;
-    width: 150px;
+    float: left;
+    width: 155px;
     min-height: 600px;
-    background: #111111;
 }
+#main #right .block {
+    width: 155px;
+    padding-top:10px;
+    clear: both;
+}
+#main #right .block .block_sidebar{
+    background: #1154a4;
+    width: 155px;
+    clear: both;
+}
+#main #right .block .block_sidebar h6 {
+    color: #FFF;
+    margin-left: 0px;
+    text-indent: 10px;
+    height: 32px; 
+    line-height: 35px;
+}
+#main #right .block .block_sidebar a.readmore{
+    float: right;
+    margin-right: 20px;
+    margin-top: -36px;
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+}
+#right .block ul li{
+    float: left;
+    width: 211px;
+    text-align: left;
+    padding-top: 10px;
+}
+
+#right .block ul li p{
+    color:#f57224;
+}
+
