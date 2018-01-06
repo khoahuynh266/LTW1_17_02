@@ -35,11 +35,27 @@
                             <li> <a href="login.php">Đăng nhập</a></li>
                 <?php endif; ?>
                 <?php if ($currentUser) : ?>
-                <li><a href="" title="">Trang cá nhân</a></li>
-                <li><a href="" title="">Đổi mật khẩu</a></li>
-                <li><a href="" title="">Đăng xuất</a></li>
-              </ul>
-              <?php endif; ?>
+                <li class="nav-item">
+				  <a class="nav-link <?php echo ($page == 'profile') ? 'active' : '' ?>" href="profile.php">
+					<?php echo $currentUser['fullname'] ?>
+				  </a>
+				</li>
+				<li class="nav-item <?php echo ($page == 'change-password') ? 'active' : '' ?>">
+				  <a class="nav-link" href="change-password.php">
+					Đổi mật khẩu
+				  </a>
+				</li>
+				<li class="nav-item">
+				  <a class="nav-link" href="logout.php">Đăng xuất</a>
+				</li>
+				<?php else : ?>
+				<li class="nav-item">
+				  <a class="nav-link disabled" href="#">
+					Khách
+				  </a>
+				</li>
+				<?php endif; ?>
+			</ul>
           </div>
           <div id="slider">
           </div>
