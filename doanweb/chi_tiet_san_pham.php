@@ -13,22 +13,30 @@
 				<div class="block_sidebar">
 					<h6 href="">Thông tin sản phẩm</h6>
 				</div>
-				<?php foreach($resultSet as $row): ?>
-					<ul>
-						<li>
-							<a href="chi_tiet_san_pham.php?id=<?php echo $row['id'] ?>" target="_blank"><img src="<?php echo $row['image'] ?>" alt="TenSanPham" /></a>
+				<div>
+					<ul id="left_info">
+						<?php foreach($resultSet as $row): ?>
+							<a><img src="<?php echo $row['image'] ?>" alt="TenSanPham" /></a>
+						<?php endforeach; ?>
+					</ul>
+					<ul id="right_info">
 							<h5><?php echo $row['tensp'] ?></h5>
 							<p><?php echo  number_format($row['gia']).' VNĐ<br>' ?></p>
-								<?php if (!$currentUser) : ?>
-									<form action="">
-									<button>THÊM VÀO GIỎ HÀNG</button>
+							<a>Số lượt xem: <?php echo  number_format($row['luotxem']).' lượt xem<br>' ?></a>
+							<a>Số lượng bán: <?php echo  number_format($row['DaBan']).' lượt mua<br>' ?></a>
+							<a>Mô tả: <?php echo  ($row['mota']).'<br>' ?></a>
+							<a>Xuất xứ: <?php echo  ($row['xuatsu']).'<br>' ?></a>
+					</ul>
+					<ul>
+							<?php if (!$currentUser) : ?>
+									<form method="POST">
+										<button type="submit">THÊM VÀO GIỎ HÀNG</button>
 									</form>
 								<?php else: ?>
 										<a href="add.php?id=<?php echo $row['id']?>">Mua
 							<?php endif ?>
-						</li>
 					</ul>
-				<?php endforeach; ?>
+				</div>
 			</div>
 		</div>
 		<div id="right">

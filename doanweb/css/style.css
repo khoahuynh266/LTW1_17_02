@@ -145,6 +145,36 @@ ul li {
     color:#f57224;
 }
 
+#main #left #left_info {
+    width: 400px;
+    min-height: 300px;
+}
+#main #left #right_info {
+    width: 400px;
+    min-height: 300px;
+}
+
+#left .block ul {
+    float: left;
+    width: 211px;
+    text-align: left;
+    padding-top: 10px;
+}
+#left .block ul img{
+    width: 400px;
+}
+#left .block ul h5{
+    color: #404040;
+    background: transparent;
+    text-decoration: none;
+    outline: none;
+    cursor: pointer;
+}
+#left .block ul p{
+    color:#f57224;
+}
+
+
 #main #right {
     float: left;
     width: 155px;

@@ -23,8 +23,8 @@ require_once 'init.php';
 							<h5><?php echo $row['tensp'] ?></h5>
 							<p><?php echo  number_format($row['gia']).' VNĐ<br>' ?></p>
 								<?php if (!$currentUser) : ?>
-									<form action="">
-									<button>THÊM VÀO GIỎ HÀNG</button>
+									<form method="POST">
+										<button type="submit">THÊM VÀO GIỎ HÀNG</button>
 									</form>
 								<?php else: ?>
 										<a href="add.php?id=<?php echo $row['id']?>">Mua
@@ -68,7 +68,7 @@ require_once 'init.php';
 							<p><?php echo  number_format($row['gia']).' VNĐ<br>' ?></p>
 								<?php if (!$currentUser) : ?>
 									<form action="">
-									<button>THÊM VÀO GIỎ HÀNG</button>
+										<button>THÊM VÀO GIỎ HÀNG</button>
 									</form>
 								<?php else: ?>
 										<a href="add.php?id=<?php echo $row['id']?>">Mua
@@ -97,7 +97,7 @@ require_once 'init.php';
 				<?php foreach($resultSet4 as $row): ?>
 					<ul>
 						<li>
-							<h5><a href="danh_sach_theo_nsx.php?id=<?php echo $row['id'] ?>"><?php echo $row['ten'] ?></a></h5>
+							<h5><a href="danh_sach_theo_nsx .php?id=<?php echo $row['id'] ?>"><?php echo $row['ten'] ?></a></h5>
 						</li>
 					</ul>
 				<?php endforeach; ?>
