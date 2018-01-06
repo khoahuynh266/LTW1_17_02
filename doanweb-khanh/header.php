@@ -35,9 +35,9 @@
                             <li> <a href="login.php">Đăng nhập</a></li>
                 <?php endif; ?>
                 <?php if ($currentUser) : ?>
-                <li><a href="" title="">Trang cá nhân</a></li>
-                <li><a href="" title="">Đổi mật khẩu</a></li>
-                <li><a href="" title="">Đăng xuất</a></li>
+                <li><a href="profile.php" title="">Trang cá nhân</a></li>
+                <li><a href="password.php" title="">Đổi mật khẩu</a></li>
+                <li><a href="logout.php" title="">Đăng xuất</a></li>
               </ul>
               <?php endif; ?>
           </div>
