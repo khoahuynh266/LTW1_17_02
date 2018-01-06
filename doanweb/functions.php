@@ -32,7 +32,23 @@ function updateUserPassword($userId, $hashPassword) {
 }
 function selectSanPhamMoi(){	
   global $db;
-  $stmt = $db->prepare("SELECT * from san_pham  group by id, tensp, loai, id_nsx, gia, soluong, mota, image, xuatsu, created_at, luotxem order by created_at desc limit 9");
+  $stmt = $db->prepare("SELECT * from san_pham  group by id, tensp, loai, id_nsx, gia, soluongban, mota, image, xuatsu, created_at, luotxem order by created_at desc limit 10");
+  $stmt->execute();
+  $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  return $posts;
+}
+
+function SanPhamBanChay(){	
+  global $db;
+  $stmt = $db->prepare("SELECT * from san_pham  order by soluongban desc limit 10");
+  $stmt->execute();
+  $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  return $posts;
+}
+
+function SanPhamXemNhieu(){	
+  global $db;
+  $stmt = $db->prepare("SELECT * from san_pham order by luotxem DESC limit 10");
   $stmt->execute();
   $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
   return $posts;
@@ -48,7 +64,7 @@ function SelectNhaSanXuat(){
 
 function SelectSanPham(){	
   global $db;
-  $stmt = $db->prepare("SELECT * from san_pham  group by id, tensp, loai, id_nsx, gia, soluong, mota, image, xuatsu, created_at, luotxem order by created_at");
+  $stmt = $db->prepare("SELECT * from san_pham");
   $stmt->execute();
   $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
   return $posts;
@@ -84,6 +100,15 @@ function ChiTietNhaSanXuat(){
   global $db;
   $id=$_GET['id'];
   $stmt = $db->prepare("SELECT * from nha_san_xuat  WHERE id = $id");
+  $stmt->execute();
+  $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  return $posts;
+}
+
+function SanPhamCungNhaSanXuat(){
+  global $db;
+  $id=$_GET['id'];
+  $stmt = $db->prepare("SELECT * from san_pham  WHERE loai = (Select loai from san_pham WHERE id = $id) and id != $id limit 5");
   $stmt->execute();
   $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
   return $posts;

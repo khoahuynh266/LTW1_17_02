@@ -7,7 +7,7 @@ session_start();
 // Gán biến page giống với tên file
 $page = basename($_SERVER['SCRIPT_NAME'], '.php');
 // Kết nối CSDL
-$db = new PDO('mysql:host=localhost;dbname=ban_hang;charset=utf8', 'root', '');
+$db = new PDO('mysql:host=localhost;dbname=db;charset=utf8', 'root', '');
 // Kiểm tra thông tin người dùng
 $currentUser = null;
 require_once 'functions.php';
