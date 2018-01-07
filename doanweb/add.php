@@ -7,11 +7,13 @@
         $sl_sanpham=$_GET['sl_sanpham'];
         createGioHang($id_nguoidung, $id_sanpham, $sl_sanpham);
         $resultSet3 = selectGioHangTheoID($id_nguoidung);
+        $resultSet4 = selectLichSuGioHangTheoID($id_nguoidung);
     }else if(!empty($_GET['id_sanphamxoa']) && !empty($_GET['id_nguoidung'])){
         $id_nguoidung=$_GET['id_nguoidung'];
         $id_sanphamxoa=$_GET['id_sanphamxoa'];
         deleteSanPham($id_sanphamxoa,$id_nguoidung);
         $resultSet3 = selectGioHangTheoID($id_nguoidung);
+        $resultSet4 = selectLichSuGioHangTheoID($id_nguoidung);
     }
     else{
         header('Location: index.php');
@@ -38,8 +40,24 @@
                     <?php endforeach; ?>
                 </div>
 			</div>
+            <div class="block" style="width: 695px">
+				<div class="block_sidebar" style="width: 695px">
+					<h6 href="">Lịch sửa mua hàng</h6>
+				</div>
+                <div>
+                    <?php foreach($resultSet4 as $row): ?>
+                        <ul>
+                            <li>
+                                <a><img src="<?php echo $row['image'] ?>" alt="TenSanPham" /></a>
+                                <h5><?php echo $row['tensp'] ?></h5>
+                                <p><?php echo  number_format($row['gia']).' VNĐ<br>' ?></p>
+                             </li>
+                        </ul>
+                    <?php endforeach; ?>
+                </div>
+			</div>
 		</div>
-        <div id="right" style="width: 248px">
+        <div id="right" style="width: 300px">
 			<div class="block" style="width: 248px">
 				<div class="block_sidebar" style="width: 248px">
 					<h6 href="">Thanh toán</h6>
