@@ -38,7 +38,7 @@ $reCaptcha = new ReCaptcha($secret);
 <script src='https://www.google.com/recaptcha/api.js'></script>
 
 <div id="main">
-<h6 style=" color: #FFF; background: #1154a4; margin-left: 0px; text-indent: 10px;  height: 32px; line-height: 35px;">Đăng ký tài khoản</h6>
+<h6 style=" color: #FFF; background: #1154a4; margin-left: 0px; text-indent: 10px;  height: 32px; line-height: 35px;margin-top: 37px;">Đăng ký tài khoản</h6>
       <?php if (!$success) : ?>
       <div class="alert alert-danger" role="alert">
         Email đã tồn tại đăng ký lại!

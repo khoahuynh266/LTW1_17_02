@@ -1,6 +1,6 @@
 <?php 
 require_once 'init.php';
-  $resultSet = selectSanPhamMoi();
+  $resultSet =  select10SanPhamMoi();
   $resultSet1 = select10SanPhamBanChay();
   $resultSet2 = select10SanPhamXemNhieu();
   $resultSet3 = selectLoaiSanPham();
@@ -14,7 +14,7 @@ require_once 'init.php';
 			<div class="block">
 				<div class="block_sidebar">
 					<h6 href="">Sản phẩm mới nhất</h6>
-					<a href="" class="readmore">Xem tất cả</a>
+					<a href="san_pham_moi.php" class="readmore">Xem tất cả</a>
 				</div>
 				<?php foreach($resultSet as $row): ?>
 					<ul>
@@ -34,7 +34,7 @@ require_once 'init.php';
 			<div class="block">
 				<div class="block_sidebar">
 					<h6 href="">Sản phẩm bán chạy nhất</h6>
-					<a href="" class="readmore">Xem tất cả</a>
+					<a href="san_pham_ban_chay.php" class="readmore">Xem tất cả</a>
 				</div>
 				<?php foreach($resultSet1 as $row): ?>
 					<ul>
@@ -53,8 +53,8 @@ require_once 'init.php';
 			</div>
 			<div class="block">
 				<div class="block_sidebar">
-					<h6 href="">Sản phẩm  nhất</h6>
-					<a href="" class="readmore">Xem tất cả</a>
+					<h6 href="">Sản phẩm xem nhất</h6>
+					<a href="san_pham_xem_nhieu.php" class="readmore">Xem tất cả</a>
 				</div>
 				<?php foreach($resultSet2 as $row): ?>
 					<ul>

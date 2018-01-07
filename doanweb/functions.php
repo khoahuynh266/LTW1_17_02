@@ -46,6 +46,7 @@ function select10SanPhamMoi()
   $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
   return $posts;
 }
+
 function select10SanPhamBanChay()
 {	
   global $db;
@@ -143,4 +144,29 @@ function deleteSanPham($id_sanphamxoa,$id_nguoidung) {
   $stmt = $db->prepare("DELETE FROM gio_hang WHERE gio_hang.id_sanpham= ? and gio_hang.id_nguoidung = ?");
   $stmt->execute(array($id_sanphamxoa,$id_nguoidung));
   return $db;
+}
+
+function selectAllSanPhamMoi()
+{	
+  global $db;
+  $stmt = $db->prepare("SELECT * from san_pham  group by id, tensp, loai, id_nsx, gia, soluong, mota, image, xuatsu, created_at, luotxem, DaBan order by created_at desc limit 100");
+  $stmt->execute();
+  $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  return $posts;
+}
+function selectAllSanPhamBanChay()
+{	
+  global $db;
+  $stmt = $db->prepare("SELECT * from san_pham  group by id, tensp, loai, id_nsx, gia, soluong, mota, image, xuatsu, created_at, luotxem, DaBan order by DaBan desc limit 100");
+  $stmt->execute();
+  $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  return $posts;
+}
+function selectAllSanPhamXemNhieu()
+{	
+  global $db;
+  $stmt = $db->prepare("SELECT * from san_pham  group by id, tensp, loai, id_nsx, gia, soluong, mota, image, xuatsu, created_at, luotxem, DaBan order by luotxem desc limit 100");
+  $stmt->execute();
+  $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  return $posts;
 }

@@ -19,7 +19,7 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
 ?>
 <?php include 'header.php' ?>
 <div id="main">
-<h6 style=" color: #FFF; background: #1154a4; margin-left: 0px; text-indent: 10px;  height: 32px; line-height: 35px;">Đăng nhập</h6>
+<h6 style=" color: #FFF; background: #1154a4; margin-left: 0px; text-indent: 10px;  height: 32px; line-height: 35px;margin-top: 37px;">Đăng nhập</h6>
     <?php if (!$success) : ?>
       <div class="alert alert-danger" role="alert">
         Email và mật khẩu không hợp lệ vui lòng đăng nhập lại!

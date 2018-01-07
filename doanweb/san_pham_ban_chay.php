@@ -1,22 +1,22 @@
 <?php 
-	require_once 'init.php';
-	$id=$_GET['text_search'];
-	$resultSet = Search($id);
-	$resultSet3 = selectLoaiSanPham();
-	$resultSet4 = selectNhaSanXuat();
+require_once 'init.php';
+  $resultSet = selectAllSanPhamBanChay();
+  $resultSet3 = selectLoaiSanPham();
+  $resultSet4 = selectNhaSanXuat();
 ?>
-<?php include 'header.php' ?> <br>
-
-<div id="main" style=" margin-top: 3px; ">
+<?php include 'header.php' ?>
+<?php if ($currentUser) : ?>
+<?php endif ?>
+	<div id="main">
 		<div id="left">
 			<div class="block">
 				<div class="block_sidebar">
-					<h6 href="">Danh sách sản phẩm</h6>
+					<h6 href="">Sản phẩm bán chạy</h6>
 				</div>
 				<?php foreach($resultSet as $row): ?>
 					<ul>
 						<li>
-						<a href="chi_tiet_san_pham.php?id=<?php echo $row['id'] ?>&loai=<?php echo $row['loai']?>&nsx=<?php echo $row['id_nsx']?>" target="_blank"><img src="<?php echo $row['image'] ?>" alt="TenSanPham" /></a>
+							<a href="chi_tiet_san_pham.php?id=<?php echo $row['id'] ?>&loai=<?php echo $row['loai']?>&nsx=<?php echo $row['id_nsx']?>" target="_blank"><img src="<?php echo $row['image'] ?>" alt="TenSanPham" /></a>
 							<h5><?php echo $row['tensp'] ?></h5>
 							<p><?php echo  number_format($row['gia']).' VNĐ<br>' ?></p>
 								<?php if (!$currentUser) : ?>
@@ -48,10 +48,13 @@
 				<?php foreach($resultSet4 as $row): ?>
 					<ul>
 						<li>
-						 		<h5><a href="danh_sach_theo_nsx.php?id=<?php echo $row['id'] ?>"><?php echo $row['ten'] ?></a></h5>
+							<h5><a href="danh_sach_theo_nsx.php?id=<?php echo $row['id'] ?>"><?php echo $row['ten'] ?></a></h5>
 						</li>
 					</ul>
 				<?php endforeach; ?>
 			</div>
 		</div>
+	</div>
+</div>
+
 <?php include 'footer.php' ?>

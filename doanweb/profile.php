@@ -22,7 +22,7 @@ if (isset($_POST['fullname'])) {
 ?>
 <?php include 'header.php' ?>
 <div id="main">
-<h6 style=" color: #FFF; background: #1154a4; margin-left: 0px; text-indent: 10px;  height: 32px; line-height: 35px;">Quản lý thông tin cá nhân</h6>
+<h6 style=" color: #FFF; background: #1154a4; margin-left: 0px; text-indent: 10px;  height: 32px; line-height: 35px;margin-top: 37px">Quản lý thông tin cá nhân</h6>
         <div>
             <?php if (!$success) : ?>
                 <div class="alert alert-danger" role="alert">
