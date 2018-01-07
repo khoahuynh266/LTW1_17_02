@@ -102,6 +102,22 @@ function ChiTietSanPham($id)
   $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
   return $posts;
 }
+function select5SanPhamCungLoai($id)
+{	
+  global $db;
+  $stmt = $db->prepare("SELECT * FROM san_pham WHERE san_pham.loai= ?  order by san_pham.luotxem desc limit 5");
+  $stmt->execute(array($id));
+  $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  return $posts;
+}
+function select5SanPhamCungNSX($id)
+{	
+  global $db;
+  $stmt = $db->prepare("SELECT * FROM san_pham WHERE san_pham.id_nsx= ?  order by san_pham.luotxem desc limit 5");
+  $stmt->execute(array($id));
+  $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  return $posts;
+}
 function Search($id){
   global $db;
   $stmt = $db->prepare("SELECT * from san_pham  WHERE tensp like '%$id%'");
