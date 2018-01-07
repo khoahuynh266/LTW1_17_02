@@ -109,3 +109,22 @@ function Search($id){
   $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
   return $posts;
 }
+function createGioHang($id_nguoidung, $id_sanpham, $soluong) {
+  global $db;
+  $stmt = $db->prepare("INSERT INTO gio_hang (id_nguoidung, id_sanpham, soluong) VALUE (?, ?, ?)");
+  $stmt->execute(array($id_nguoidung, $id_sanpham, $soluong));
+  return $db;
+}
+function selectGioHangTheoID($id){
+  global $db;
+  $stmt = $db->prepare("SELECT san_pham.id,san_pham.tensp,san_pham.gia,san_pham.image, gio_hang.soluong FROM gio_hang, san_pham WHERE gio_hang.id_sanpham=san_pham.id AND gio_hang.id_nguoidung= ? AND gio_hang.tinhtrang= 0");
+  $stmt->execute(array($id));
+  $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  return $posts;
+}
+function deleteSanPham($id_sanphamxoa,$id_nguoidung) {
+  global $db;
+  $stmt = $db->prepare("DELETE FROM gio_hang WHERE gio_hang.id_sanpham= ? and gio_hang.id_nguoidung = ?");
+  $stmt->execute(array($id_sanphamxoa,$id_nguoidung));
+  return $db;
+}

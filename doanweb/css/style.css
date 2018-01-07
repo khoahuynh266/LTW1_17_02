@@ -129,7 +129,7 @@ ul li {
 #left .block ul li{
     float: left;
     width: 211px;
-    text-align: left;
+    text-align: center;
     padding-top: 10px;
 }
 #left .block ul li img{

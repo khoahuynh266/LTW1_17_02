@@ -23,11 +23,9 @@ require_once 'init.php';
 							<h5><?php echo $row['tensp'] ?></h5>
 							<p><?php echo  number_format($row['gia']).' VNĐ<br>' ?></p>
 								<?php if (!$currentUser) : ?>
-									<form method="POST">
-										<button type="submit">THÊM VÀO GIỎ HÀNG</button>
-									</form>
+									<a href="login.php"><button>Đăng nhập</button></a>
 								<?php else: ?>
-										<a href="add.php?id=<?php echo $row['id']?>">Mua
+										<a href="add.php?id_nguoidung=<?php echo $currentUser["id"]?>&id_sanpham=<?php echo $row['id']?>&sl_sanpham=1"><button>Mua hàng</button></a>
 							<?php endif ?>
 						</li>
 					</ul>
@@ -45,11 +43,9 @@ require_once 'init.php';
 							<h5><?php echo $row['tensp'] ?></h5>
 							<p><?php echo  number_format($row['gia']).' VNĐ<br>' ?></p>
 								<?php if (!$currentUser) : ?>
-									<form action="">
-									<button>THÊM VÀO GIỎ HÀNG</button>
-									</form>
+										<a href="login.php"><button>Đăng nhập</button></a>
 								<?php else: ?>
-										<a href="add.php?id=<?php echo $row['id']?>">Mua
+										<a href="add.php?id_nguoidung=<?php echo $currentUser["id"]?>&id_sanpham=<?php echo $row['id']?>&sl_sanpham=1"><button>Mua hàng</button></a>
 							<?php endif ?>
 						</li>
 					</ul>
@@ -67,11 +63,9 @@ require_once 'init.php';
 							<h5><?php echo $row['tensp'] ?></h5>
 							<p><?php echo  number_format($row['gia']).' VNĐ<br>' ?></p>
 								<?php if (!$currentUser) : ?>
-									<form action="">
-										<button>THÊM VÀO GIỎ HÀNG</button>
-									</form>
+										<a href="login.php"><button>Đăng nhập</button></a>
 								<?php else: ?>
-										<a href="add.php?id=<?php echo $row['id']?>">Mua
+										<a href="add.php?id_nguoidung=<?php echo $currentUser["id"]?>&id_sanpham=<?php echo $row['id']?>&sl_sanpham=1"><button>Mua hàng</button></a>
 							<?php endif ?>
 						</li>
 					</ul>
