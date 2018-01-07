@@ -51,7 +51,7 @@
 				<?php else : ?>
 				<li class="nav-item">
 				  <a class="nav-link disabled" href="#">
-					Khách
+					    Khách
 				  </a>
 				</li>
 				<?php endif; ?>

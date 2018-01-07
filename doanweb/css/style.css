@@ -1,9 +1,9 @@
 body {
     font-family: Tahoma;
     font-size: 13px;
-    background: url(../images/body.ipg);
     margin:  0px;
     padding: 0px;
+    background: 0 0;
 }
 ul{
     margin: 0px;
@@ -13,9 +13,7 @@ ul li {
     list-style: none;
 }
 #header{
-    background: url("../images/body.png") no-repeat;
-    height: 200px;
-    background-color: #cccccc; 
+    height: 230px;
 }
 #header2{
     height: 200px;
@@ -31,45 +29,49 @@ ul li {
 }
 #header_margin #logo{
     width: 400px;
+    margin-left: 290px;
 }
 #header_margin #logo img{
     width: 400px;
     height: 120px;
-    margin-top: 00px;
+    margin-top: 10px;
 }
 #header_margin #from_search {
     margin-top: 30px;
     width: 400px;
     position: relative;
+    margin-left: 180px;
 }
 #header_margin #from_search input{
     border: 1px solid #1154a4;
     background: #c3ecf8;
-    height: 34px;
-    width: 340px;
+    height: 40px;
+    width: 440px;
 }
 #header_margin #from_search button{
     background: url("../images/btn_search.png");
-    background-repeat: repeat-x; 
+    background-repeat: repeat-x;
     width: 160px;
     height: 43px;
     position: absolute;
-    top: -3px;
-    right: -105px;
+    top: -1px;
+    right: -205px;
     padding: 2px 6px 3px;
 }
 #slider_menu {
-    height: 300px;
+    height: 84px;
     float: none;
 }
 #slider_menu_margin {
-    margin: 0px auto;
-    height: 467px;
+    margin: -14px auto;
+    height: 310px;
     width: 1000px;
+    background: url("../images/123.png") repeat-x;
+
 }
 #slider_menu_margin #menu{
     height: 40px;
-    background: #1154a4;
+    background: #11252f;
     width: 1000px;
     clear: both;
 }
