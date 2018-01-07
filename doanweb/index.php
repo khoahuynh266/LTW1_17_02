@@ -91,7 +91,7 @@ require_once 'init.php';
 				<?php foreach($resultSet4 as $row): ?>
 					<ul>
 						<li>
-							<h5><a href="danh_sach_theo_nsx .php?id=<?php echo $row['id'] ?>"><?php echo $row['ten'] ?></a></h5>
+							<h5><a href="danh_sach_theo_nsx.php?id=<?php echo $row['id'] ?>"><?php echo $row['ten'] ?></a></h5>
 						</li>
 					</ul>
 				<?php endforeach; ?>
