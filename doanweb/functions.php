@@ -66,7 +66,7 @@ function select10SanPhamXemNhieu()
 function selectLoaiSanPham()
 {	
   global $db;
-  $stmt = $db->prepare("SELECT * FROM loai_san_pham ORDER BY loai_san_pham.ten ASC");
+  $stmt = $db->prepare("SELECT * FROM loai_san_pham ORDER BY loai_san_pham.ten_loai ASC");
   $stmt->execute();
   $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
   return $posts;
@@ -74,7 +74,7 @@ function selectLoaiSanPham()
 function selectNhaSanXuat()
 {	
   global $db;
-  $stmt = $db->prepare("SELECT * FROM nha_san_xuat ORDER BY nha_san_xuat.ten ASC");
+  $stmt = $db->prepare("SELECT * FROM nha_san_xuat ORDER BY nha_san_xuat.ten_nsx ASC");
   $stmt->execute();
   $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
   return $posts;
@@ -98,7 +98,7 @@ function selectTheoNSX($id)
 function ChiTietSanPham($id)
 {	
   global $db;
-  $stmt = $db->prepare("SELECT * from san_pham where id = ?");
+  $stmt = $db->prepare("SELECT sp.id, sp.tensp, sp.loai, sp.id_nsx, sp.gia, sp.soluong, sp.mota, sp.image, sp.xuatsu, sp.created_at, sp.luotxem, sp.DaBan,nsx.ten_nsx,lsp.ten_loai FROM san_pham as  sp,loai_san_pham as lsp,nha_san_xuat as nsx WHERE sp.loai = lsp.id and sp.id_nsx = nsx.id AND sp.id = ?");
   $stmt->execute(array($id));
   $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
   return $posts;
