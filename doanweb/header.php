@@ -15,8 +15,8 @@
           <img src="images/logo.png" alt="Logo">
       </div>
       <div id="from_search">
-          <form  method="POST">
-              <input type="text_search" name="text_search" id="text_search"  placeholder="Tìm kiếm"  value=""/>
+          <form action="Search.php" method="get">
+              <input type="text" name="text_search" id="text_search"  placeholder="     Tìm kiếm"  value=""/>
               <button  type="submit"></button>
           </form>
       </div>

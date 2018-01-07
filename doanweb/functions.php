@@ -102,3 +102,10 @@ function ChiTietSanPham($id)
   $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
   return $posts;
 }
+function Search($id){
+  global $db;
+  $stmt = $db->prepare("SELECT * from san_pham  WHERE tensp like '%$id%'");
+  $stmt->execute(array($id));
+  $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  return $posts;
+}
