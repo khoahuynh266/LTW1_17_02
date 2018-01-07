@@ -33,7 +33,7 @@ function updateUserPassword($userId, $hashPassword) {
 function selectSanPhamMoi()
 {	
   global $db;
-  $stmt = $db->prepare("SELECT * from san_pham  group by id, tensp, loai, id_nsx, gia, soluong, mota, image, xuatsu, created_at, luotxem, DaBan order by created_at desc limit 9");
+  $stmt = $db->prepare("SELECT * from san_pham  group by id, tensp, loai, id_nsx, gia, soluong, mota, image, xuatsu, created_at, luotxem, DaBan order by created_at desc limit 12");
   $stmt->execute();
   $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
   return $posts;
@@ -41,7 +41,7 @@ function selectSanPhamMoi()
 function select10SanPhamMoi()
 {	
   global $db;
-  $stmt = $db->prepare("SELECT * from san_pham  group by id, tensp, loai, id_nsx, gia, soluong, mota, image, xuatsu, created_at, luotxem, DaBan order by created_at desc limit 10");
+  $stmt = $db->prepare("SELECT * from san_pham  group by id, tensp, loai, id_nsx, gia, soluong, mota, image, xuatsu, created_at, luotxem, DaBan order by created_at desc limit 12");
   $stmt->execute();
   $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
   return $posts;
@@ -49,7 +49,7 @@ function select10SanPhamMoi()
 function select10SanPhamBanChay()
 {	
   global $db;
-  $stmt = $db->prepare("SELECT * from san_pham  group by id, tensp, loai, id_nsx, gia, soluong, mota, image, xuatsu, created_at, luotxem, DaBan order by DaBan desc limit 10");
+  $stmt = $db->prepare("SELECT * from san_pham  group by id, tensp, loai, id_nsx, gia, soluong, mota, image, xuatsu, created_at, luotxem, DaBan order by DaBan desc limit 12");
   $stmt->execute();
   $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
   return $posts;
@@ -57,7 +57,7 @@ function select10SanPhamBanChay()
 function select10SanPhamXemNhieu()
 {	
   global $db;
-  $stmt = $db->prepare("SELECT * from san_pham  group by id, tensp, loai, id_nsx, gia, soluong, mota, image, xuatsu, created_at, luotxem, DaBan order by luotxem desc limit 10");
+  $stmt = $db->prepare("SELECT * from san_pham  group by id, tensp, loai, id_nsx, gia, soluong, mota, image, xuatsu, created_at, luotxem, DaBan order by luotxem desc limit 12");
   $stmt->execute();
   $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
   return $posts;
