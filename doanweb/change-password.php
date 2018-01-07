@@ -18,32 +18,34 @@ if (isset($_POST['oldPassword'])) {
 }
 ?>
 <?php include 'header.php' ?>
-<h1>Đổi mật khẩu</h1>
-<?php if (!$success) : ?>
-<div class="alert alert-danger" role="alert">
-  <ul>
-    <?php if (!$oldPasswordOk) : ?>
-    <li>Mật khẩu cũ không chính xác!</li>
+<div id="main">
+<h6 style=" color: #FFF; background: #1154a4; margin-left: 0px; text-indent: 10px;  height: 32px; line-height: 35px;margin-top: 37px;">Đổi mậu khẩu</h6>
+    <?php if (!$success) : ?>
+    <div class="alert alert-danger" role="alert">
+      <ul>
+        <?php if (!$oldPasswordOk) : ?>
+        <li>Mật khẩu cũ không chính xác!</li>
+        <?php endif; ?>
+        <?php if (!$newPasswordOk) : ?>
+        <li>Mật khẩu mới cần giống nhau và ít nhất 6 ký tự!</li>
+        <?php endif; ?>
+      </ul>
+    </div>
     <?php endif; ?>
-    <?php if (!$newPasswordOk) : ?>
-    <li>Mật khẩu mới cần giống nhau và ít nhất 6 ký tự!</li>
-    <?php endif; ?>
-  </ul>
+    <form method="POST">
+      <div class="form-group">
+        <label for="oldPassword">Mật khẩu cũ</label>
+        <input type="password" class="form-control" id="oldPassword" name="oldPassword" placeholder="Điền mật khẩu cũ vào đây">
+      </div>
+      <div class="form-group">
+        <label for="newPassword">Mật khẩu mới</label>
+        <input type="password" class="form-control" id="newPassword" name="newPassword" placeholder="Điền mật khẩu mới vào đây">
+      </div>
+      <div class="form-group">
+        <label for="newPassword2">Mật khẩu mới (nhập lại)</label>
+        <input type="password" class="form-control" id="newPassword2" name="newPassword2" placeholder="Điền mật khẩu mới vào đây lần nữa">
+      </div>
+      <button type="submit" class="btn btn-primary">Đổi mật khẩu</button>
+    </form>
+    <?php include 'footer.php' ?>
 </div>
-<?php endif; ?>
-<form method="POST">
-  <div class="form-group">
-    <label for="oldPassword">Mật khẩu cũ</label>
-    <input type="password" class="form-control" id="oldPassword" name="oldPassword" placeholder="Điền mật khẩu cũ vào đây">
-  </div>
-  <div class="form-group">
-    <label for="newPassword">Mật khẩu mới</label>
-    <input type="password" class="form-control" id="newPassword" name="newPassword" placeholder="Điền mật khẩu mới vào đây">
-  </div>
-  <div class="form-group">
-    <label for="newPassword2">Mật khẩu mới (nhập lại)</label>
-    <input type="password" class="form-control" id="newPassword2" name="newPassword2" placeholder="Điền mật khẩu mới vào đây lần nữa">
-  </div>
-  <button type="submit" class="btn btn-primary">Đổi mật khẩu</button>
-</form>
-<?php include 'footer.php' ?>

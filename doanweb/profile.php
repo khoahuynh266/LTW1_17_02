@@ -21,21 +21,24 @@ if (isset($_POST['fullname'])) {
 }
 ?>
 <?php include 'header.php' ?>
-<h1>Quản lý thông tin cá nhân</h1>
-<?php if (!$success) : ?>
-<div class="alert alert-danger" role="alert">
-  Vui lòng nhập đầy đủ thông tin!
+<div id="main">
+<h6 style=" color: #FFF; background: #1154a4; margin-left: 0px; text-indent: 10px;  height: 32px; line-height: 35px;margin-top: 37px">Quản lý thông tin cá nhân</h6>
+        <div>
+            <?php if (!$success) : ?>
+                <div class="alert alert-danger" role="alert">
+                  Vui lòng nhập đầy đủ thông tin!
+                </div>
+            <?php endif; ?>
+              <form method="POST">
+                <div class="form-group">
+                    <label for="fullname">Họ và tên</label>
+                    <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Điền họ và tên vào đây" value="<?php echo $fullname ?>">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Số điện thoại</label>
+                    <input type="text" class="form-control" id="phone" name="phone" placeholder="Điền số điện thoại vào đây" value="<?php echo $phone ?>">
+                </div>
+                      <button type="submit" class="btn btn-primary">Cập nhật</button>
+              </form>
+        </div>
 </div>
-<?php endif; ?>
-<form method="POST">
-  <div class="form-group">
-    <label for="fullname">Họ và tên</label>
-    <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Điền họ và tên vào đây" value="<?php echo $fullname ?>">
-  </div>
-  <div class="form-group">
-    <label for="phone">Số điện thoại</label>
-    <input type="text" class="form-control" id="phone" name="phone" placeholder="Điền số điện thoại vào đây" value="<?php echo $phone ?>">
-  </div>
-  <button type="submit" class="btn btn-primary">Cập nhật</button>
-</form>
-<?php include 'footer.php' ?>

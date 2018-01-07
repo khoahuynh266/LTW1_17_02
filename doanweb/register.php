@@ -36,26 +36,29 @@ $reCaptcha = new ReCaptcha($secret);
 
 <?php include 'header.php' ?>
 <script src='https://www.google.com/recaptcha/api.js'></script>
-<h1>Đăng ký tài khoản</h1>
-<?php if (!$success) : ?>
-<div class="alert alert-danger" role="alert">
-  Email đã tồn tại đăng ký lại!
+
+<div id="main">
+<h6 style=" color: #FFF; background: #1154a4; margin-left: 0px; text-indent: 10px;  height: 32px; line-height: 35px;margin-top: 37px;">Đăng ký tài khoản</h6>
+      <?php if (!$success) : ?>
+      <div class="alert alert-danger" role="alert">
+        Email đã tồn tại đăng ký lại!
+      </div>
+      <?php endif; ?>
+      <form method="POST">
+        <div class="form-group">
+          <label for="fullname">Họ và tên</label>
+          <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Điền họ và tên vào đây" value="<?php echo isset($_POST['fullname']) ? $_POST['fullname'] : '' ?>">
+        </div>
+        <div class="form-group">
+          <label for="email">Địa chỉ email</label>
+          <input type="email" class="form-control" id="email" name="email" placeholder="Điền email vào đây" value="<?php echo isset($_POST['email']) ? $_POST['email'] : '' ?>">
+        </div>
+        <div class="form-group">
+          <label for="password">Mật khẩu</label>
+          <input type="password" class="form-control" id="password" name="password" placeholder="Điền mật khẩu vào đây">
+        </div>
+          <div class="g-recaptcha" data-sitekey="6LdVKz8UAAAAAGsQvtUIaIW2etc8ZQEb0aO7PGDG"></div>
+        <button type="submit" class="btn btn-primary">Đăng ký</button>
+      </form>
+      <?php include 'footer.php' ?>
 </div>
-<?php endif; ?>
-<form method="POST">
-  <div class="form-group">
-    <label for="fullname">Họ và tên</label>
-    <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Điền họ và tên vào đây" value="<?php echo isset($_POST['fullname']) ? $_POST['fullname'] : '' ?>">
-  </div>
-  <div class="form-group">
-    <label for="email">Địa chỉ email</label>
-    <input type="email" class="form-control" id="email" name="email" placeholder="Điền email vào đây" value="<?php echo isset($_POST['email']) ? $_POST['email'] : '' ?>">
-  </div>
-  <div class="form-group">
-    <label for="password">Mật khẩu</label>
-    <input type="password" class="form-control" id="password" name="password" placeholder="Điền mật khẩu vào đây">
-  </div>
-    <div class="g-recaptcha" data-sitekey="6LdVKz8UAAAAAGsQvtUIaIW2etc8ZQEb0aO7PGDG"></div>
-  <button type="submit" class="btn btn-primary">Đăng ký</button>
-</form>
-<?php include 'footer.php' ?>
