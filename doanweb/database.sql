@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jan 07, 2018 at 04:04 PM
+-- Generation Time: Jan 07, 2018 at 05:56 PM
 -- Server version: 5.7.19
 -- PHP Version: 5.6.31
 
@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `gio_hang` (
   `soluong` int(11) NOT NULL,
   `tinhtrang` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=94 DEFAULT CHARSET=utf32 COLLATE=utf32_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=104 DEFAULT CHARSET=utf32 COLLATE=utf32_unicode_ci;
 
 --
 -- Dumping data for table `gio_hang`
@@ -77,8 +77,9 @@ CREATE TABLE IF NOT EXISTS `gio_hang` (
 
 INSERT INTO `gio_hang` (`id`, `id_nguoidung`, `id_sanpham`, `soluong`, `tinhtrang`) VALUES
 (10, 1, 2, 3, 1),
-(83, 4, 1, 1, 1),
-(84, 4, 2, 1, 1);
+(84, 4, 2, 1, 1),
+(102, 4, 2, 1, 0),
+(103, 4, 24, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -89,7 +90,7 @@ INSERT INTO `gio_hang` (`id`, `id_nguoidung`, `id_sanpham`, `soluong`, `tinhtran
 DROP TABLE IF EXISTS `loai_san_pham`;
 CREATE TABLE IF NOT EXISTS `loai_san_pham` (
   `id` int(11) NOT NULL,
-  `ten` varchar(100) CHARACTER SET utf8 NOT NULL,
+  `ten_loai` varchar(100) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_unicode_ci;
 
@@ -97,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `loai_san_pham` (
 -- Dumping data for table `loai_san_pham`
 --
 
-INSERT INTO `loai_san_pham` (`id`, `ten`) VALUES
+INSERT INTO `loai_san_pham` (`id`, `ten_loai`) VALUES
 (1, 'Sam'),
 (2, 'Op'),
 (3, 'Apple');
@@ -111,7 +112,7 @@ INSERT INTO `loai_san_pham` (`id`, `ten`) VALUES
 DROP TABLE IF EXISTS `nha_san_xuat`;
 CREATE TABLE IF NOT EXISTS `nha_san_xuat` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `ten` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `ten_nsx` varchar(50) CHARACTER SET utf8 NOT NULL,
   `diachi` varchar(100) CHARACTER SET utf8 NOT NULL,
   `email` text CHARACTER SET utf8,
   `phone` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -122,7 +123,7 @@ CREATE TABLE IF NOT EXISTS `nha_san_xuat` (
 -- Dumping data for table `nha_san_xuat`
 --
 
-INSERT INTO `nha_san_xuat` (`id`, `ten`, `diachi`, `email`, `phone`) VALUES
+INSERT INTO `nha_san_xuat` (`id`, `ten_nsx`, `diachi`, `email`, `phone`) VALUES
 (1, 'Sam Sung', 'China', 'SamSung@gmail', '01231456789'),
 (2, 'Oppo', 'China', 'Oppo@gmail', '01231456788'),
 (3, 'Apple', 'Usa', 'Apple@gmail', '01231456787');
