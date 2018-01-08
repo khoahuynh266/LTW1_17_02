@@ -7,7 +7,10 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
     if (password_verify($_POST['password'], $user['password'])) {
       $success = true;
       $_SESSION['userId'] = $user['id'];
-      header('Location: index.php');
+	  if($user['type']== 1){
+	  header('Location: admin.php'); }
+	  else{
+	  header('Location: index.php');}
       exit();
     } else {
       $success = false;

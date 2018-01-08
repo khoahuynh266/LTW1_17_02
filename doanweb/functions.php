@@ -177,3 +177,34 @@ function selectLichSuGioHangTheoID($id){
   $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
   return $posts;
 }
+function deleteUser($id)
+{	
+  global $db;
+	$stmt = $db->prepare("DELETE from users where id = $id");
+	$stmt->execute(array($id));
+  return $db;
+}
+function selectAllUser()
+{	
+  global $db;
+  $stmt = $db->prepare("SELECT * from users");
+  $stmt->execute();
+  $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  return $posts;
+}
+function deleteDonHangUser($id)
+{	
+  global $db;
+	$stmt = $db->prepare("DELETE from donhang where idkhachhang = $id");
+	$stmt->execute(array($id));
+  return $db;
+}
+function selectDonHangGanDay()
+{
+	global $db;
+	$stmt = $db->prepare("SELECT * from donhang order by create_at desc limit 2");
+	$stmt->execute();
+	$posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	return $posts;
+}
+

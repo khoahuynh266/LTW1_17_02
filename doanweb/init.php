@@ -13,4 +13,5 @@ $currentUser = null;
 require_once 'functions.php';
 if (isset($_SESSION['userId'])) {
   $currentUser = findUserById($_SESSION['userId']);
+  $typeUser = $currentUser['type']; 
 }
