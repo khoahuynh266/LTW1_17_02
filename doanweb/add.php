@@ -1,4 +1,4 @@
-<?php 
+[<?php 
     require_once 'init.php';
     
     if (!empty($_GET['id_nguoidung']) && !empty($_GET['id_sanpham']) && !empty($_GET['sl_sanpham'])) {
@@ -15,7 +15,12 @@
         $resultSet3 = selectGioHangTheoID($id_nguoidung);
         $resultSet4 = selectLichSuGioHangTheoID($id_nguoidung);
     }
-    else{
+    else if(!empty($_GET['id_nguoidung'])){
+        $id_nguoidung=$_GET['id_nguoidung'];
+        oderGioHang($id_nguoidung);
+        $resultSet3 = selectGioHangTheoID($id_nguoidung);
+        $resultSet4 = selectLichSuGioHangTheoID($id_nguoidung);
+    }else{
         header('Location: index.php');
     }
 ?>
@@ -71,6 +76,7 @@
                     <?php endforeach; ?>
                     <p>Tổng tiền: <?php echo  number_format($Tong_tien).' VNĐ<br>' ?></p>
                 </div>
+                <a href="add.php?id_nguoidung=<?php echo $currentUser["id"] ?>"><button>Thanh Toán</button></a>
 			</div>
 		</div>
 </div>
