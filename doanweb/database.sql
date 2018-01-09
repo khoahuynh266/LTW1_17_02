@@ -2,10 +2,10 @@
 -- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th1 08, 2018 lúc 09:14 AM
--- Phiên bản máy phục vụ: 10.1.28-MariaDB
--- Phiên bản PHP: 7.1.10
+-- Host: 127.0.0.1:3306
+-- Generation Time: Jan 09, 2018 at 04:42 AM
+-- Server version: 5.7.19
+-- PHP Version: 5.6.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `ban_hang`
+-- Database: `ban_hang`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `chi_tiet_don_hang`
+-- Table structure for table `chi_tiet_don_hang`
 --
 
 DROP TABLE IF EXISTS `chi_tiet_don_hang`;
@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `chi_tiet_don_hang` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `don_hang`
+-- Table structure for table `don_hang`
 --
 
 DROP TABLE IF EXISTS `don_hang`;
@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `don_hang` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `gio_hang`
+-- Table structure for table `gio_hang`
 --
 
 DROP TABLE IF EXISTS `gio_hang`;
@@ -70,25 +70,26 @@ CREATE TABLE IF NOT EXISTS `gio_hang` (
   `id_sanpham` int(11) UNSIGNED NOT NULL,
   `soluong` int(11) NOT NULL,
   `tinhtrang` int(11) NOT NULL DEFAULT '0',
+  `tinhtrangdonhang` int(11) DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `id_nguoidung` (`id_nguoidung`),
   KEY `id_sanpham` (`id_sanpham`)
 ) ENGINE=InnoDB AUTO_INCREMENT=104 DEFAULT CHARSET=utf32 COLLATE=utf32_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `gio_hang`
+-- Dumping data for table `gio_hang`
 --
 
-INSERT INTO `gio_hang` (`id`, `id_nguoidung`, `id_sanpham`, `soluong`, `tinhtrang`) VALUES
-(10, 1, 2, 3, 1),
-(84, 4, 2, 1, 1),
-(102, 4, 2, 1, 0),
-(103, 4, 24, 1, 0);
+INSERT INTO `gio_hang` (`id`, `id_nguoidung`, `id_sanpham`, `soluong`, `tinhtrang`, `tinhtrangdonhang`) VALUES
+(10, 1, 2, 3, 1, 0),
+(84, 4, 2, 1, 1, 0),
+(102, 4, 2, 1, 0, 0),
+(103, 4, 24, 1, 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `loai_san_pham`
+-- Table structure for table `loai_san_pham`
 --
 
 DROP TABLE IF EXISTS `loai_san_pham`;
@@ -99,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `loai_san_pham` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf32 COLLATE=utf32_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `loai_san_pham`
+-- Dumping data for table `loai_san_pham`
 --
 
 INSERT INTO `loai_san_pham` (`id`, `ten_loai`) VALUES
@@ -110,7 +111,7 @@ INSERT INTO `loai_san_pham` (`id`, `ten_loai`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `nha_san_xuat`
+-- Table structure for table `nha_san_xuat`
 --
 
 DROP TABLE IF EXISTS `nha_san_xuat`;
@@ -125,7 +126,7 @@ CREATE TABLE IF NOT EXISTS `nha_san_xuat` (
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `nha_san_xuat`
+-- Dumping data for table `nha_san_xuat`
 --
 
 INSERT INTO `nha_san_xuat` (`id`, `ten_nsx`, `diachi`, `email`, `phone`, `images`) VALUES
@@ -140,7 +141,7 @@ INSERT INTO `nha_san_xuat` (`id`, `ten_nsx`, `diachi`, `email`, `phone`, `images
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `san_pham`
+-- Table structure for table `san_pham`
 --
 
 DROP TABLE IF EXISTS `san_pham`;
@@ -160,10 +161,10 @@ CREATE TABLE IF NOT EXISTS `san_pham` (
   PRIMARY KEY (`id`),
   KEY `loai` (`loai`),
   KEY `id_nsx` (`id_nsx`)
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `san_pham`
+-- Dumping data for table `san_pham`
 --
 
 INSERT INTO `san_pham` (`id`, `tensp`, `loai`, `id_nsx`, `gia`, `soluong`, `mota`, `image`, `xuatsu`, `created_at`, `luotxem`, `daban`) VALUES
@@ -207,11 +208,11 @@ INSERT INTO `san_pham` (`id`, `tensp`, `loai`, `id_nsx`, `gia`, `soluong`, `mota
 (38, 'Điện thoại Sony Xperia XA1 Ultra', 1, 4, 8490000, 200, 'Kế nhiệm sự thành công của phablet không viền Sony Xperia XA Ultra thì Sony giới thiệu phiên bản XA1 Ultra với nhiều cải tiến đáng giá.', 'images/38.jpg', 'Việt Nam', '2017-12-26 10:00:00', 1234, 0),
 (39, 'Điện thoại Sony Xperia XA1 Ultra Pink', 1, 3, 7490000, 200, 'Sau một thời gian xuất hiện tại Việt Nam và nhận được nhiều sự quan tâm từ người dùng thì mới đây Sony đã tung ra phiên bản màu hồng cho chiếc Sony Xperia XA1 Ultra để phục vụ riêng cho \"phái đẹp\".', 'images/39.jpg', 'Việt Nam', '2017-12-26 10:00:00', 1234, 0),
 (40, 'Điện thoại Sony Xperia X', 1, 3, 7490000, 200, 'Sony vừa giới thiệu dòng sản phẩm X Serie mới của hãng trong năm 2016 tại triển lãm MWC. Xperia X là chiếc smartphone tầm trung mới với nhiều điểm nhấn đáng chú ý.', 'images/40.jpg', 'Việt Nam', '2017-12-26 10:00:00', 1234, 0),
-(41, 'Máy tính bảng Samsung Galaxy Book 10.6 inch', 3, 1, 19990000, 400, 'Samsung Galaxy Book 10.6 inch là mẫu tablet 2 trong 1 chạy trên nền tảng Windows 10 nhưng vẫn sở hữu cho mình cây bút Spen thần thánh.', 'images/41.jpg', 'Việt Nam', '4017-14-46 10:00:00', 56, 0),
+(41, 'Máy tính bảng Samsung Galaxy Book 10.6 inch', 3, 1, 19990000, 400, 'Samsung Galaxy Book 10.6 inch là mẫu tablet 2 trong 1 chạy trên nền tảng Windows 10 nhưng vẫn sở hữu cho mình cây bút Spen thần thánh.', 'images/41.jpg', 'Việt Nam', '0000-00-00 00:00:00', 56, 0),
 (42, 'Máy tính bảng Samsung Galaxy Tab A6 10.1 Spen', 3, 1, 7990000, 100, 'Tiếp nối sự thành công của chiếc Samsung Galaxy Tab A thì mới đây Samsung đã giới thiệu phiên bản cải tiến là chiếc Galaxy Tab A6 10.1 với nhiều nâng cấp đáng giá về cấu hình và thiết kế.', 'images/42.jpg', 'Việt Nam', '2017-12-26 10:00:00', 54, 0),
 (43, 'Máy tính bảng Samsung Galaxy Tab A 8.0 (2017)', 3, 1, 6490000, 100, 'Samsung Galaxy Tab A 8.0 (2017) mới có màn hình tỉ lệ 4:3 với không gian hiển thị rộng thông minh cho người dùng.', 'images/43.jpg', 'Việt Nam', '2017-12-26 10:00:00', 64, 0),
 (44, 'Máy tính bảng Samsung Galaxy Tab E 9.6 (SM-T561)', 3, 1, 4490000, 100, 'Samsung Galaxy Tab E 9.6 là một sự lựa chọn cho bạn thích một chiếc máy có màn hình lớn để giải trí thoải mái hơn nhưng cấu hình không quá thấp.', 'images/44.jpg', 'Việt Nam', '2017-12-26 10:00:00', 94, 0),
-(45, 'Máy tính bảng Samsung Galaxy Tab A6 7.0"', 3, 1, 3590000, 100, 'Samsung Galaxy Tab A6 7.0 với thiết kế vẫn mang vẻ truyền thống và cấu hình tốt, khả năng hiển thị cải thiện, cùng kết nối 4G.', 'images/45.jpg', 'Việt Nam', '2017-12-26 10:00:00', 1434, 0),
+(45, 'Máy tính bảng Samsung Galaxy Tab A6 7.0\"', 3, 1, 3590000, 100, 'Samsung Galaxy Tab A6 7.0 với thiết kế vẫn mang vẻ truyền thống và cấu hình tốt, khả năng hiển thị cải thiện, cùng kết nối 4G.', 'images/45.jpg', 'Việt Nam', '2017-12-26 10:00:00', 1434, 0),
 (46, 'Máy tính bảng iPad Pro 10.5 inch Wifi Cellular 64GB (2017)', 3, 3, 19990000, 400, 'Apple vẫn giữ ngôn ngữ thiết kế từ xa xưa tới nay, nên phiên bản 10.5 inch cũng không có gì khác lắm với những người tiền nhiệm còn lại. Tuy không mới nhưng đây vẫn là một thiết kế vượt thời gian và rất sang trọng.', 'images/46.jpg', 'Việt Nam', '2017-12-26 10:00:00', 1434, 0),
 (47, 'Máy tính bảng iPad Pro 10.5 inch Wifi 64GB (2017)', 3, 3, 16990000, 400, 'iPad Pro 10.5 inch Wifi 64GB (2017) với kích thước màn hình nhỏ hơn, viền màn hình siêu mỏng cùng hiệu năng mạnh mẽ sẽ đáp ứng tốt cho bạn trong mọi nhu cầu sử dụng hằng ngày.', 'images/47.jpg', 'Việt Nam', '2017-12-26 10:00:00', 1434, 0),
 (48, 'Máy tính bảng iPad Wifi Cellular 32GB (2017)', 3, 3, 12990000, 400, 'Dòng máy tính bảng iPad Wifi Cellular 32GB (2017) mới của Apple sở hữu cho mình cấu hình mạnh mẽ cùng mức giá bán rất hấp dẫn.', 'images/48.jpg', 'Việt Nam', '2017-12-26 10:00:00', 1434, 0),
@@ -222,7 +223,7 @@ INSERT INTO `san_pham` (`id`, `tensp`, `loai`, `id_nsx`, `gia`, `soluong`, `mota
 (53, 'DELL 15 inch dòng XPS 2017 -9560', 2, 5, 40990000, 100, 'XPS 15 9560 là phiên bản mới nhất trong dòng máy tính giải trí di động XPS với thiết kế hiện đại, màn hình cảm ứng độ phân giải FHD cùng cấu hình phần cứng mạnh. Máy có thiết kế tinh tế, kiểu dáng mỏng nhẹ cùng chất liệu sợi carbon và hợp kim nhôm nên máy khá nhẹ đồng thời vẫn tạo được sự chắc chắn, độ bền cao. Chiếc máy cho âm thanh chất lượng cao bằng công nghệ Waves MaxxAudio® Pro của Del', 'images/Dell/3.jpg', 'Việt Nam', NULL, 7, 7),
 (54, 'DELL 17.3 inch dòng New Alienware 17', 2, 5, 41790000, 100, 'New Alienware 17 là phiên bản mới nhất trong dòng máy tính Gaming của dell với thiết kế hiện đại, màn hình cảm ứng độ phân giải FHD cùng cấu hình phần cứng cực mạnh. Máy có thiết kế tinh tế, kiểu dáng cực pro cùng chất liệu sợi carbon và hợp kim nhôm nên máy khá nhẹ đồng thời vẫn tạo được sự chắc chắn, độ bền cao. Chiếc máy cho âm thanh chất lượng cao bằng công nghệ Waves MaxxAudio® Pro của Dell', 'images/Dell/4.jpg', 'Việt Nam', NULL, 8, 8),
 (55, 'DELL 15.6 inch dòng inspiron 5000', 2, 5, 12790000, NULL, 'Dell Inspiron 15 5578 lẽ đương nhiên cũng sở hữu bản lề xoay 360 độ, màn hình cảm ứng đa điểm, nên không chỉ có thể xếp gọn để dùng như một chiếc tablet khủng, máy còn hỗ trợ nhiều chế độ sử dụng khác – tiện dụng cho nhu cầu giải trí hoặc khi cần chia sẻ ý tưởng trong công việc. Riêng về phần cứng, Inspiron 15 cũng đã được Dell mạnh dạn trang bị ổ 1tb và bộ xử lý Kaby-lake đời thế hệ 7 Intel Core i7-7500U vốn có mức xung nhịp chuẩn đạt mức 2,7GHz, RAM DDR4 kênh đôi tổng dung lượng 32GB. Dell Inspiron 13 5578 cũng được nhà sản xuất ưu ái đóng gói kèm công nghệ âm thanh MaxxAudio vốn cung cấp các tùy chỉnh âm thanh được thiết lập sẵn tối ưu cho từng nhu cầu giải trí. Lẽ đương nhiên là người dùng cũng có thể tùy chỉnh các thiết lập âm thanh theo sở thích nghe nhạc của mình một cách dễ dàng. Khoác lên mình lớp vỏ độc đáo hợp kim nhôm kết hợp với một màu trắng bạc để hiện diện nổi bật và thật khác biệt. ', 'images/Dell/5.jpg', 'Việt Nam', NULL, 9, 9),
-(56, 'DELL 15.6 inch dòng INSPIRON 5577', 2, 5, 22890000, NULL, 'Dell N5577 là chiếc laptop Gaming của Dell có thiết mạnh mẽ, cá tính cùng cấu hình vô cùng mạnh mẽ với bộ vi xử lý Core i7 thế hệ 7 mới nhất của Intel kết hợp cùng bộ nhớ RAM 8GB và card đồ họa rời 4GB, hứa hẹn sẽ mang đến cho người dùng những trải nghiệm khác biệt và mượt mà nhất.', 'images/Dell/6.jpg', NULL, NULL, NULL, 0),
+(56, 'DELL 15.6 inch dòng INSPIRON 5577', 2, 5, 22890000, NULL, 'Dell N5577 là chiếc laptop Gaming của Dell có thiết mạnh mẽ, cá tính cùng cấu hình vô cùng mạnh mẽ với bộ vi xử lý Core i7 thế hệ 7 mới nhất của Intel kết hợp cùng bộ nhớ RAM 8GB và card đồ họa rời 4GB, hứa hẹn sẽ mang đến cho người dùng những trải nghiệm khác biệt và mượt mà nhất.', 'images/Dell/6.jpg', NULL, NULL, 0, 0),
 (57, 'DELL 15.6 inch dòng INSPIRON 5577', 2, 5, 18889000, NULL, 'Dell N5577 là chiếc laptop Gaming của Dell có thiết mạnh mẽ, cá tính cùng cấu hình vô cùng mạnh mẽ với bộ vi xử lý Core i7 thế hệ 7 mới nhất của Intel kết hợp cùng bộ nhớ RAM 8GB và card đồ họa rời 4GB, hứa hẹn sẽ mang đến cho người dùng những trải nghiệm khác biệt và mượt mà nhất.', 'images/Dell/7.jpg', NULL, NULL, 5, 5),
 (58, 'DELL 12.5\" dòng LATITUDE E7270 ', 2, 5, 15590000, NULL, 'Dell Latitude E7270/i5-6300U sở hữu một thiết kế khá nhỏ gọn, với chiều dài 31 cm, rộng 21.6 cm, cao 1.72 cm và chỉ nặng 1.26 kg phù hợp cho người dùng mang theo máy trong các chuyến công tác, hay di chuyển trong văn phòng. Máy được chế tạo từ chất liệu cao cấp, mặt ngoài nắp máy được chế tạo để chống bám vân tay, các góc cạnh được bo tròn một cách tỉ mỹ đem lại một vẻ ngoài sang trọng và chắc chắn.', 'images/Dell/8.jpg', NULL, NULL, 5, 5),
 (59, 'DELL 15 inch dòng LATITUDE E3580', 2, 5, 11490000, NULL, 'Dell latitude 3580 là một dòng laptop 15.6\" có thiết kế mỏng nhẹ với màn hình FHD ATG rực rỡ. Là thương hiệu máy tính cao cấp của Dell hướng đến đối tượng người dùng doanh nhân, doanh nghiệp và nằm chung phân khúc với HP EliteBook và ThinkPad. Bộ vi xử lí core i3 thế hệ 7 cho hiệu suất tối đa. Chất liệu chế tạo của 3580 mang lại cảm nhận xúc giác rất tốt và sự cao cấp. Mặt ngoài nắp máy được hoàn thiện với một lớp phủ mềm, không bám vân tay bằng sợi carbon. Theo Dell, Latitude 3580 đã trải qua các thử nghiệm nhằm đáp ứng tiêu chuẩn độ bền quân sự MIL-STD 810G để đảm bảo rằng hệ thống có thể xử lý việc sử dụng hàng ngày mà không có vấn đề.', 'images/Dell/9.jpg', NULL, NULL, 5, 5),
@@ -239,13 +240,14 @@ INSERT INTO `san_pham` (`id`, `tensp`, `loai`, `id_nsx`, `gia`, `soluong`, `mota
 (70, 'Acer Swift SF314 32EX i3 7100U', 2, 7, 21000000, NULL, 'Laptop Acer Swift SF314 32EX là một sản phẩm có thiết kế sang trọng với vỏ kim loại chắc chắn, bảo mật vân tay, cùng màn hình Full HD sắc nét.', 'images/Acer/29.jpg', NULL, NULL, 5, 5),
 (71, 'Laptop Apple Macbook Air MQD32SA/A i5 1.8GHz/8GB/128GB (2017)', 2, 3, 23990000, 200, 'Macbook Air MQD32SA/A i5 5350U với thiết kế vỏ nhôm nguyên khối Unibody rất đẹp, chắc chắn và sang trọng. Máy siêu mỏng và siêu nhẹ, hiệu năng ổn định mượt mà, thời lượng pin cực lâu, phục vụ tốt cho nhu cầu làm việc lẫn giải trí.', 'images/Apple/.jpg', 'Việt Nam', '2017-12-26 03:00:00', 1234, 0),
 (72, 'Laptop Apple Macbook Pro MPXR2SA/A i5 2.3GHz/8GB/128GB (2017)', 2, 3, 33990000, 200, 'Apple Macbook Pro MPXR2SA/A i5 là dòng sản phẩm cao cấp với thiết kế kim loại nguyên khối, chip i5 thế hệ thứ 7 và dùng ổ SSD dung lượng 128 GB mang đến sự bền bỉ và mạnh mẽ khi sử dụng.', 'images/Apple/2.jpg', 'Việt Nam', '2017-12-26 03:00:00', 1234, 0),
-(73, 'Laptop Apple Macbook 12" MMGM2 Core M 1.2GHz/8GB/512GB (2016)', 2, 3, 36990000, 200, 'Apple Macbook 12 inch MMGM2 là phiên bản 2016 được nâng cấp đôi chút so với bản 2015, có RAM lớn, ổ SSD tốc độ cao, chip xử lý mới và tốt.', 'images/Apple/3.jpg', 'Việt Nam', '2017-12-26 03:00:00', 1234, 0),
-(74, 'Laptop Apple Macbook 12" MLHF2 Core M 1.2GHz/8GB/512GB (2016)', 2, 3, 36990000, 200, 'Vẫn duy trì thiết kế cực kỳ quyến rũ của mình Apple Macbook 12 inch năm 2016 được cải tiến thêm về hiệu năng với chip xử lý Core M của Intel đem đến hiệu năng vượt trội hơn.', 'images/Apple/4.jpg', 'Việt Nam', '2017-12-26 03:00:00', 1234, 0),
+(73, 'Laptop Apple Macbook 12\" MMGM2 Core M 1.2GHz/8GB/512GB (2016)', 2, 3, 36990000, 200, 'Apple Macbook 12 inch MMGM2 là phiên bản 2016 được nâng cấp đôi chút so với bản 2015, có RAM lớn, ổ SSD tốc độ cao, chip xử lý mới và tốt.', 'images/Apple/3.jpg', 'Việt Nam', '2017-12-26 03:00:00', 1234, 0),
+(74, 'Laptop Apple Macbook 12\" MLHF2 Core M 1.2GHz/8GB/512GB (2016)', 2, 3, 36990000, 200, 'Vẫn duy trì thiết kế cực kỳ quyến rũ của mình Apple Macbook 12 inch năm 2016 được cải tiến thêm về hiệu năng với chip xử lý Core M của Intel đem đến hiệu năng vượt trội hơn.', 'images/Apple/4.jpg', 'Việt Nam', '2017-12-26 03:00:00', 1234, 0),
 (75, 'Laptop Apple Macbook Pro Touch MLH32SA/A i7 2.6GHz/16GB/256GB (2016)', 2, 3, 56990000, 200, 'MacBook Pro 2016 là “khủng long xinh đẹp” trong thế giới laptop, đặc biệt là sự xuất hiện của thanh Touch Bar – là một dải cảm ứng cho phép truy cập nhanh công cụ. ', 'images/Apple/5.jpg', 'Việt Nam', '2017-12-26 03:00:00', 1234, 0);
+
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `users`
+-- Table structure for table `users`
 --
 
 DROP TABLE IF EXISTS `users`;
@@ -260,7 +262,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `fullname`, `email`, `password`, `type`, `phone`) VALUES
@@ -270,31 +272,31 @@ INSERT INTO `users` (`id`, `fullname`, `email`, `password`, `type`, `phone`) VAL
 (4, 'khanhvo1', 'khanhthangngulol1@gmail.com', '$2y$10$Zs3586jvp5BbTxKjcMly8.y0.TtcjOa/mPDa0hzmpaE1AtUI/hwcS', NULL, '01649502951');
 
 --
--- Các ràng buộc cho các bảng đã đổ
+-- Constraints for dumped tables
 --
 
 --
--- Các ràng buộc cho bảng `chi_tiet_don_hang`
+-- Constraints for table `chi_tiet_don_hang`
 --
 ALTER TABLE `chi_tiet_don_hang`
   ADD CONSTRAINT `chi_tiet_don_hang_ibfk_1` FOREIGN KEY (`id_donhang`) REFERENCES `don_hang` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `chi_tiet_don_hang_ibfk_2` FOREIGN KEY (`id_sanpham`) REFERENCES `san_pham` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Các ràng buộc cho bảng `don_hang`
+-- Constraints for table `don_hang`
 --
 ALTER TABLE `don_hang`
   ADD CONSTRAINT `don_hang_ibfk_1` FOREIGN KEY (`id_nguoidung`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Các ràng buộc cho bảng `gio_hang`
+-- Constraints for table `gio_hang`
 --
 ALTER TABLE `gio_hang`
   ADD CONSTRAINT `gio_hang_ibfk_1` FOREIGN KEY (`id_nguoidung`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `gio_hang_ibfk_2` FOREIGN KEY (`id_sanpham`) REFERENCES `san_pham` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Các ràng buộc cho bảng `san_pham`
+-- Constraints for table `san_pham`
 --
 ALTER TABLE `san_pham`
   ADD CONSTRAINT `san_pham_ibfk_1` FOREIGN KEY (`id_nsx`) REFERENCES `nha_san_xuat` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
