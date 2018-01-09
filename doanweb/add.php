@@ -1,4 +1,4 @@
-[<?php 
+<?php 
     require_once 'init.php';
     
     if (!empty($_GET['id_nguoidung']) && !empty($_GET['id_sanpham']) && !empty($_GET['sl_sanpham'])) {
@@ -56,8 +56,10 @@
                                 <a><img src="<?php echo $row['image'] ?>" alt="TenSanPham" /></a>
                                 <?php if($row['tinhtrangdonhang'] == 1) : ?>
                                     <h5 style=" color: mediumseagreen; "><?php echo $row['tensp'] ?></h5>
-                                    <?php else: ?>
-                                        <h5 style=" color: red; "><?php echo $row['tensp'] ?></h5>
+                                <?php elseif($row['tinhtrangdonhang'] == 2) : ?>
+                                    <h5 style=" color: yellow; "><?php echo $row['tensp'] ?></h5>
+                                <?php else: ?>
+                                    <h5 style=" color: red; "><?php echo $row['tensp'] ?></h5>
                                 <?php endif ?>
                                 <p><?php echo  number_format($row['gia']).' VNĐ<br>' ?></p>
                              </li>
