@@ -142,6 +142,13 @@ function Search($id){
   $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
   return $posts;
 }
+function SearchLimit($id,$offset,$limit){
+  global $db;
+  $stmt = $db->prepare("SELECT * from san_pham  WHERE tensp like '%$id%' LIMIT $offset,$limit");
+  $stmt->execute(array($id,$offset,$limit));
+  $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  return $posts;
+}
 function createGioHang($id_nguoidung, $id_sanpham, $soluong) {
   global $db;
   $stmt = $db->prepare("INSERT INTO gio_hang (id_nguoidung, id_sanpham, soluong) VALUE (?, ?, ?)");
@@ -234,7 +241,7 @@ function xoaSanPham($id)
 function selectDonHangGanDay()
 {
 	global $db;
-	$stmt = $db->prepare("SELECT * from don_hang dh join chi_tiet_don_hang c on dh.id = c.id_donhang order by dh.id desc");
+	$stmt = $db->prepare("SELECT * from don_hang dh join chi_tiet_don_hang c on dh.id = c.id_donhang order by dh.created_at desc");
 	$stmt->execute();
 	$posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	return $posts;

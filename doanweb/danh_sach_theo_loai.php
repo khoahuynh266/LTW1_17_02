@@ -9,7 +9,7 @@
 	
 	// BƯỚC 3: TÌM LIMIT VÀ CURRENT_page
 	$current_page = isset($_GET['page']) ? $_GET['page'] : 1;
-	$limit = 5;
+	$limit = 4;
 	 
 	// BƯỚC 4: TÍNH TOÁN TOTAL_page VÀ offset
 	// tổng số trang

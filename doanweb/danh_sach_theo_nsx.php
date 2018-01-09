@@ -29,7 +29,6 @@
 	// BƯỚC 5: TRUY VẤN LẤY DANH SÁCH
 	// Có limit và offset rồi thì truy vấn CSDL lấy danh sách
 	$resultSet = selectTheoNSXLimit($id,$offset,$limit);
-	var_dump($offset);
 ?>
 <?php include 'header.php' ?>
 
