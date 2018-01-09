@@ -7,12 +7,12 @@ $success = true;
 			$id_donghang=$_GET['id'];
             $resultSet = findDonHangByID($id_donghang);
         }
-	if(isset($_POST['trangthai'])){
-		$trangthai = $_POST['trangthai'];
+	if(isset($_POST['tinhtrangdonhang'])){
+		$tinhtrangdonhang = $_POST['tinhtrangdonhang'];
 		if(isset($_GET["id"]))
 		{
 			$id=$_GET['id'];
-            $exe=$db->prepare("UPDATE don_hang SET trangthai = '$trangthai' where id = $id");
+            $exe=$db->prepare("UPDATE gio_hang SET tinhtrangdonhang = '$tinhtrangdonhang' where id = $id");
             $exe->execute();
 		}
 		else
@@ -35,15 +35,15 @@ $success = true;
     <?php foreach($resultSet as $row): ?>
     <center><form method="POST">
         <div class="form-group">
-		<label for="trangthai">Trạng Thái Đơn Hàng:</label>
-		<?php if($row['trangthai'] == 1): ?>
-        <input type="trangthai" class="form-control bg-warning" id="trangthai" name="trangthai" value="<?php echo $row['trangthai'] ?>">
+		<label for="tinhtrangdonhang">Trạng Thái Đơn Hàng:</label>
+		<?php if($row['tinhtrangdonhang'] == 1): ?>
+        <input type="tinhtrangdonhang" class="form-control bg-warning" id="tinhtrangdonhang" name="tinhtrangdonhang" value="<?php echo $row['tinhtrangdonhang'] ?>">
 		<?php endif;?>
-		<?php if($row['trangthai'] == 2): ?>
-        <input type="trangthai" class="form-control bg-success" id="trangthai" name="trangthai" value="<?php echo $row['trangthai'] ?>">
+		<?php if($row['tinhtrangdonhang'] == 2): ?>
+        <input type="tinhtrangdonhang" class="form-control bg-success" id="tinhtrangdonhang" name="tinhtrangdonhang" value="<?php echo $row['tinhtrangdonhang'] ?>">
 		<?php endif;?>
-		<?php if($row['trangthai'] == 0): ?>
-        <input type="trangthai" class="form-control bg-danger" id="trangthai" name="trangthai" value="<?php echo $row['trangthai'] ?>">
+		<?php if($row['tinhtrangdonhang'] == 0): ?>
+        <input type="tinhtrangdonhang" class="form-control bg-danger" id="tinhtrangdonhang" name="tinhtrangdonhang" value="<?php echo $row['tinhtrangdonhang'] ?>">
 		<?php endif;?>
 	   </div>
         <button type="submit" class="btn btn-primary">Xác Nhận</button>

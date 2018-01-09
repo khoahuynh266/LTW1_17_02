@@ -31,11 +31,7 @@
             <td>
                 <?php  $resultSet2 = findSanPhamByID($row['id_sanpham']) ?>
 				<?php foreach($resultSet2 as $row2): 
-				 echo $row2['tensp'] ;
-				 endforeach;
-				 ?>
-				 
-				
+				 echo $row2['tensp'] ;?>						
             </td>
             <td>
                 <?php echo $row['id_nguoidung'] ?>
@@ -44,22 +40,23 @@
                 <?php echo $row['created_at'] ?>
             </td>
 			<td>
-                <?php echo $row['giaban'] ?>
+                <?php echo $row2['gia'] ?>
             </td>
 				<td>
                 <?php echo $row['soluong'] ?>
             </td>
 			<td>
-                <?php echo $row['giatien'] ?>
+                <?php echo $row['soluong']*$row2['gia'] ?>
             </td>
+			 <?php endforeach; ?>
             <td>
-                <?php if($row['trangthai'] ==0): ?>
+                <?php if($row['tinhtrangdonhang'] ==0): ?>
                 <a href="update_donhang.php?id=<?php echo $row['id'] ?>" class="btn btn-danger" role="button">Chưa Giao</a>
                 <?php endif; ?>
-                <?php if($row['trangthai'] == 1): ?>
+                <?php if($row['tinhtrangdonhang'] == 1): ?>
                 <a href="update_donhang.php?id=<?php echo $row['id'] ?>" class="btn btn-warning" role="button">Đang giao</a>
                 <?php endif; ?>
-                <?php if($row['trangthai'] == 2): ?>
+                <?php if($row['tinhtrangdonhang'] == 2): ?>
                 <a href="update_donhang.php?id=<?php echo $row['id'] ?>" class="btn btn-success" role="button">Đã giao</a>
                 <?php endif; ?>
             </td>

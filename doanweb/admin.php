@@ -6,7 +6,7 @@ if(!empty($_POST['id']))
 {
 $id = $_POST['id'];
 deleteUser($id);
-deleteDonHangUser($id);
+xoaDonHangUser($id);
 }
 $resultSet=selectAllUser();
 ?>

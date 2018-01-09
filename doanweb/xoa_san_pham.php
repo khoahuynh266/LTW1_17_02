@@ -85,10 +85,10 @@
 							  <img src="<?php echo $row['image'] ?>" width = "120px" > 
 							</td>
 							<td>
-								<a href="xoa_san_pham.php?id=<?php echo $row['id'] ?>" class="btn btn-danger" role="button">Xóa Sản Phẩm</a>
+								<a href="xoa_san_pham.php?id=<?php echo $row['id'] ?>" class="btn btn-danger" role="button">Xóa</a>
 							</td>
 							<td>
-								<a href="sua_san_pham.php?id=<?php echo $row['id'] ?>" class="btn btn-info" role="button">Sửa Sản Phẩm</a>
+								<a href="sua_san_pham.php?id=<?php echo $row['id'] ?>" class="btn btn-info" role="button">Sửa </a>
 							</td>
 						  </tr>
 						</tbody>
@@ -128,30 +128,21 @@
      </div>  
 </div>	 
 	<div id="right">
-			<div class="block">
-				<div class="block_sidebar">					
-					<ul>
-						<li>
-							<h6><a href="them_san_pham.php" type="button" class="btn btn-primary">Thêm Sản Phẩm</a></h6>
-						</li>
-					</ul>
-				</div>
-				<div class="block_sidebar">			
-					<ul>
-						<li>
-							<h6><a href="xoa_san_pham.php?id=0" type="button" class="btn btn-primary">Xóa Sản Phẩm</a></h6>
-						</li>
-					</ul>
-				</div>
-				<div class="block_sidebar">
-					<ul>
-						<li>
-							<h6><a href="sua_san_pham.php" type="button" class="btn btn-primary">Sửa Sản Phẩm</a></h6>
-						</li>
-					</ul>
-					
-				</div>
-			</div>
+	<div class="block">
+		<div class="block_sidebar">					
+			<ul>
+				<li>
+					<h6><a href="them_san_pham.php" type="button" class="btn btn-primary">Thêm Sản Phẩm</a></h6>
+				</li>
+			</ul>
+		</div>
+		<div class="block_sidebar">			
+			<ul>
+				<li>
+					<h6><a href="xoa_san_pham.php?id=0" type="button" class="btn btn-primary">Xóa Sản Phẩm</a></h6>
+				</li>
+			</ul>
+		</div>
 	</div>	
 </div>	
 

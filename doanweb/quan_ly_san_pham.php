@@ -115,33 +115,24 @@
 		</nav>
      </div>  
 </div>	 
-	<div id="right">
-			<div class="block">
-				<div class="block_sidebar">					
-					<ul>
-						<li>
-							<h6><a href="them_san_pham.php" type="button" class="btn btn-primary">Thêm Sản Phẩm</a></h6>
-						</li>
-					</ul>
-				</div>
-				<div class="block_sidebar">			
-					<ul>
-						<li>
-							<h6><a href="xoa_san_pham.php" type="button" class="btn btn-primary">Xóa Sản Phẩm</a></h6>
-						</li>
-					</ul>
-				</div>
-				<div class="block_sidebar">
-					<ul>
-						<li>
-							<h6><a href="sua_san_pham.php" type="button" class="btn btn-primary">Sửa Sản Phẩm</a></h6>
-						</li>
-					</ul>
-					
-				</div>
+<div id="right">
+		<div class="block">
+			<div class="block_sidebar">					
+				<ul>
+					<li>
+						<h6><a href="them_san_pham.php" type="button" class="btn btn-primary">Thêm Sản Phẩm</a></h6>
+					</li>
+				</ul>
 			</div>
-	</div>	
+			<div class="block_sidebar">			
+				<ul>
+					<li>
+						<h6><a href="xoa_san_pham.php" type="button" class="btn btn-primary">Xóa Sản Phẩm</a></h6>
+					</li>
+				</ul>
+			</div>
+		</div>	
 </div>	
-
-    <?php include"footer.php" ?>
+</div>	
+<?php include"footer.php" ?>
 <?php endif; ?>

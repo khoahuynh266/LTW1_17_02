@@ -227,7 +227,7 @@ function selectAllUser()
 function xoaDonHangUser($id)
 {	
   global $db;
-	$stmt = $db->prepare("DELETE from don_hang where id_sanpham = $id");
+	$stmt = $db->prepare("DELETE from don_hang where id_nguoidung = $id");
 	$stmt->execute(array($id));
   return $db;
 }
@@ -241,7 +241,7 @@ function xoaSanPham($id)
 function selectDonHangGanDay()
 {
 	global $db;
-	$stmt = $db->prepare("SELECT * from don_hang dh join chi_tiet_don_hang c on dh.id = c.id_donhang order by dh.created_at desc");
+	$stmt = $db->prepare("SELECT * from gio_hang where tinhtrang = 1 order by created_at desc");
 	$stmt->execute();
 	$posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	return $posts;
@@ -283,7 +283,7 @@ function selectSanPhamLimit($offset,$limit)
 function findDonHangById($id_donhang)
 {
 	global $db;
-	$stmt = $db->prepare("SELECT * from don_hang where id = $id_donhang");
+	$stmt = $db->prepare("SELECT * from gio_hang where id = $id_donhang");
 	$stmt->execute(array($id_donhang));
 	$posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	return $posts;
