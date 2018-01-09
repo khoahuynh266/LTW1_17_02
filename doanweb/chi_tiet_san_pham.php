@@ -52,7 +52,7 @@
 			</div>
 			<div class="block">
 				<?php foreach($resultSet5 as $row): ?>
-					<ul style="width: 169px">
+					<ul>
 						<li>
 						<a href="chi_tiet_san_pham.php?id=<?php echo $row['id'] ?>&loai=<?php echo $row['loai']?>&nsx=<?php echo $row['id_nsx']?>" target="_blank"><img src="<?php echo $row['image'] ?>" alt="TenSanPham" /></a>
 							<h5><?php echo $row['tensp'] ?></h5>
@@ -66,7 +66,7 @@
 					</ul>
 				<?php endforeach; ?>
 				<?php foreach($resultSet6 as $row): ?>
-					<ul style="width: 169px">
+					<ul>
 						<li>
 						<a href="chi_tiet_san_pham.php?id=<?php echo $row['id'] ?>&loai=<?php echo $row['loai']?>&nsx=<?php echo $row['id_nsx']?>" target="_blank"><img src="<?php echo $row['image'] ?>" alt="TenSanPham" /></a>
 							<h5><?php echo $row['tensp'] ?></h5>

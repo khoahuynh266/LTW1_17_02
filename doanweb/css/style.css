@@ -165,7 +165,8 @@ ul li {
     padding-top: 10px;
 }
 #left .block ul img{
-    width: 400px;
+    width: 350px;
+    height: 350px;
 }
 #left .block ul h5{
     color: #404040;
