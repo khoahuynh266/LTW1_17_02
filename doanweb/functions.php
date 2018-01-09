@@ -209,7 +209,7 @@ function selectDonHangGanDay()
 }
 function oderGioHang($id_nguoidung) {
   global $db;
-  $stmt = $db->prepare("UPDATE gio_hang SET tinhtrang=1 WHERE id_nguoidung = 5");
+  $stmt = $db->prepare("UPDATE gio_hang SET tinhtrang=1 WHERE id_nguoidung = ?");
   $stmt->execute(array($id_nguoidung));
   return $db;
 }
