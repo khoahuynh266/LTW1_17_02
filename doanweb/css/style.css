@@ -136,6 +136,7 @@ ul li {
 }
 #left .block ul li img{
     width: 160px;
+    height: 160px;
 }
 #left .block ul li h5{
     color: #404040;
