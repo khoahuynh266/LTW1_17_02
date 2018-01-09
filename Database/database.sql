@@ -2,10 +2,10 @@
 -- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th1 09, 2018 lúc 12:07 PM
--- Phiên bản máy phục vụ: 10.1.29-MariaDB
--- Phiên bản PHP: 7.2.0
+-- Host: 127.0.0.1:3306
+-- Generation Time: Jan 09, 2018 at 04:42 AM
+-- Server version: 5.7.19
+-- PHP Version: 5.6.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,17 +19,134 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `database`
+-- Database: `ban_hang`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `san_pham`
+-- Table structure for table `chi_tiet_don_hang`
 --
 
-CREATE TABLE `san_pham` (
-  `id` int(11) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `chi_tiet_don_hang`;
+CREATE TABLE IF NOT EXISTS `chi_tiet_don_hang` (
+  `id_donhang` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id_sanpham` int(11) UNSIGNED NOT NULL,
+  `soluong` int(11) NOT NULL COMMENT 'số lượng',
+  `giaban` double NOT NULL,
+  `giatien` int(11) NOT NULL,
+  PRIMARY KEY (`id_donhang`,`id_sanpham`) USING BTREE,
+  KEY `id_sanpham` (`id_sanpham`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `don_hang`
+--
+
+DROP TABLE IF EXISTS `don_hang`;
+CREATE TABLE IF NOT EXISTS `don_hang` (
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id_nguoidung` int(11) UNSIGNED NOT NULL,
+  `tongsp` int(11) DEFAULT NULL COMMENT 'tổng số sản phẩm',
+  `tongtien` int(11) DEFAULT NULL COMMENT 'tổng giá trị',
+  `trangthai` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `id_nguoidung` (`id_nguoidung`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gio_hang`
+--
+
+DROP TABLE IF EXISTS `gio_hang`;
+CREATE TABLE IF NOT EXISTS `gio_hang` (
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id_nguoidung` int(11) UNSIGNED NOT NULL,
+  `id_sanpham` int(11) UNSIGNED NOT NULL,
+  `soluong` int(11) NOT NULL,
+  `tinhtrang` int(11) NOT NULL DEFAULT '0',
+  `tinhtrangdonhang` int(11) DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `id_nguoidung` (`id_nguoidung`),
+  KEY `id_sanpham` (`id_sanpham`)
+) ENGINE=InnoDB AUTO_INCREMENT=104 DEFAULT CHARSET=utf32 COLLATE=utf32_unicode_ci;
+
+--
+-- Dumping data for table `gio_hang`
+--
+
+INSERT INTO `gio_hang` (`id`, `id_nguoidung`, `id_sanpham`, `soluong`, `tinhtrang`, `tinhtrangdonhang`) VALUES
+(10, 1, 2, 3, 1, 0),
+(84, 4, 2, 1, 1, 0),
+(102, 4, 2, 1, 0, 0),
+(103, 4, 24, 1, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `loai_san_pham`
+--
+
+DROP TABLE IF EXISTS `loai_san_pham`;
+CREATE TABLE IF NOT EXISTS `loai_san_pham` (
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `ten_loai` varchar(100) CHARACTER SET utf8 NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf32 COLLATE=utf32_unicode_ci;
+
+--
+-- Dumping data for table `loai_san_pham`
+--
+
+INSERT INTO `loai_san_pham` (`id`, `ten_loai`) VALUES
+(1, 'Điện thoại'),
+(2, 'LapTop'),
+(3, 'Máy tính bảng');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `nha_san_xuat`
+--
+
+DROP TABLE IF EXISTS `nha_san_xuat`;
+CREATE TABLE IF NOT EXISTS `nha_san_xuat` (
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `ten_nsx` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `diachi` varchar(100) CHARACTER SET utf8 NOT NULL,
+  `email` text CHARACTER SET utf8,
+  `phone` varchar(16) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `images` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `nha_san_xuat`
+--
+
+INSERT INTO `nha_san_xuat` (`id`, `ten_nsx`, `diachi`, `email`, `phone`, `images`) VALUES
+(1, 'SamSung', 'Seoul, Hàn Quốc', 'support@samsung.vn', '1800 588 890', 'images/SamSung.jpg'),
+(2, 'Oppo', 'Đông Hoản, Trung Quốc', 'service@oppo.vn', '(028)38229844', 'images/Oppo.jpg'),
+(3, 'Apple', 'Cupertino, California', 'support@Apple.com', '358 63 53 47 005', 'images/apple.jpg'),
+(4, 'Sony', 'Minato, Tokyo, Tōkyō, Nhật Bản', 'support@Sony.vn', '180 058 885', 'images/sony.jpg'),
+(5, 'Dell', 'Round Rock, Texas, Hoa Kỳ', 'support@dell.com', '358 11 44 88 000', 'images/Dell/dell.jpg'),
+(6, 'HP', 'Palo Alto, California, Hoa Kỳ', 'support@HP.vn', '1900 555567', 'images/HP/hp.jpg'),
+(7, 'Acer', 'Tân Bắc, Đài Loan', 'support@Acer.com', '351 04 48 80 003', 'images/Acer/acer.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `san_pham`
+--
+
+DROP TABLE IF EXISTS `san_pham`;
+CREATE TABLE IF NOT EXISTS `san_pham` (
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `tensp` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `loai` int(11) UNSIGNED NOT NULL,
   `id_nsx` int(11) UNSIGNED NOT NULL,
@@ -40,11 +157,14 @@ CREATE TABLE `san_pham` (
   `xuatsu` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `luotxem` int(11) NOT NULL,
-  `daban` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `daban` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `loai` (`loai`),
+  KEY `id_nsx` (`id_nsx`)
+) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `san_pham`
+-- Dumping data for table `san_pham`
 --
 
 INSERT INTO `san_pham` (`id`, `tensp`, `loai`, `id_nsx`, `gia`, `soluong`, `mota`, `image`, `xuatsu`, `created_at`, `luotxem`, `daban`) VALUES
@@ -80,24 +200,25 @@ INSERT INTO `san_pham` (`id`, `tensp`, `loai`, `id_nsx`, `gia`, `soluong`, `mota
 (30, 'Điện thoại iPhone 6s Plus 32GB', 1, 3, 13990000, 200, 'iPhone 6s Plus 32 GB là phiên bản nâng cấp hoàn hảo từ iPhone 6 Plus với nhiều tính năng mới hấp dẫn', 'images/30.jpg', 'Việt Nam', '2017-12-26 10:00:00', 1234, 0),
 (31, 'Điện thoại iPhone 6 32GB', 1, 3, 8490000, 100, 'iPhone 6 là một trong những smartphone được yêu thích nhất của Apple. Lắng nghe nhu cầu về thiết kế, khả năng lưu trữ và giá cả, iPhone 6 32GB được chính thức phân phối chính hãng tại Việt Nam hứa hẹn sẽ là một sản phẩm rất Hot', 'images/31.jpg', 'Việt Nam', '2017-12-26 10:00:00', 1234, 0),
 (32, 'Điện thoại iPhone 5S 16GB', 1, 3, 5990000, 100, 'Thiết kế sang trọng, gia công tỉ mỉ, tích hợp cảm biến vân tay cao cấp hơn, camera cho hình ảnh đẹp và sáng hơn.', 'images/32.jpg', 'Việt Nam', '2017-12-26 10:00:00', 1234, 0),
-(33, 'Sony Xperia XZ Premium', 1, 4, 17990000, 100, 'Sony Xperia XZ Premium là flagship của Sony trong năm 2017 với vẻ ngoài hào nhoáng, màn hình cao cấp cũng nhiều trang bị hàng đầu khác.', 'images/33.jpg', 'Việt Nam', '2017-12-26 10:00:00', 1234, 0),
-(34, 'Sony Xperia XZ Premium Pink Gold', 1, 4, 16490000, 200, 'Sony Xperia XZ Premium Pink Gold là một phiên bản khác của chiếc Sony Xperia XZ Premium với khác biệt duy nhất đến từ màu Pink Gold quyến rũ.', 'images/34.jpg', 'Việt Nam', '2017-12-26 10:00:00', 1234, 0),
-(35, 'Sony Xperia XZ1 2017 (Màu Đen)', 1, 4, 15990000, 100, 'Sony Xperia XZ1 là mẫu flagship kế tiếp của Sony tiếp nối sự thành công của chiếc Xperia XZs đã ra mắt trước đó với những nâng cấp nhẹ về mặt cấu hình và thiết kế.', 'images/35.jpg', 'Việt Nam', '2017-12-26 10:00:00', 1234, 0),
-(36, 'Sony Xperia XZs 2017(Màu Xanh)', 1, 4, 12990000, 200, 'Sony Xperia XZs là smartphone được Sony đầu tư mạnh mẽ về camera với hàng loạt các trang bị cao cấp và sở hữu cho mình một mức giá bán hợp lý với người tiêu dùng.', 'images/36.jpg', 'Việt Nam', '2017-12-26 10:00:00', 1234, 0),
+(33, 'Điện thoại Sony Xperia XZ Premium', 1, 4, 17990000, 100, 'Sony Xperia XZ Premium là flagship của Sony trong năm 2017 với vẻ ngoài hào nhoáng, màn hình cao cấp cũng nhiều trang bị hàng đầu khác.', 'images/33.jpg', 'Việt Nam', '2017-12-26 10:00:00', 1234, 0),
+(34, 'Điện thoại Sony Xperia XZ Premium Pink Gold', 1, 4, 16490000, 200, 'Sony Xperia XZ Premium Pink Gold là một phiên bản khác của chiếc Sony Xperia XZ Premium với khác biệt duy nhất đến từ màu Pink Gold quyến rũ.', 'images/34.jpg', 'Việt Nam', '2017-12-26 10:00:00', 1234, 0),
+(35, 'Điện thoại Sony Xperia XZ1', 1, 4, 15990000, 100, 'Sony Xperia XZ1 là mẫu flagship kế tiếp của Sony tiếp nối sự thành công của chiếc Xperia XZs đã ra mắt trước đó với những nâng cấp nhẹ về mặt cấu hình và thiết kế.', 'images/35.jpg', 'Việt Nam', '2017-12-26 10:00:00', 1234, 0),
+(36, 'Điện thoại Sony Xperia XZs', 1, 4, 12990000, 200, 'Sony Xperia XZs là smartphone được Sony đầu tư mạnh mẽ về camera với hàng loạt các trang bị cao cấp và sở hữu cho mình một mức giá bán hợp lý với người tiêu dùng.', 'images/36.jpg', 'Việt Nam', '2017-12-26 10:00:00', 1234, 0),
 (37, 'Điện thoại Sony Xperia XZ Dual', 1, 4, 9990000, 200, 'Sony Xperia XZ với thiết kế cực đẹp, cùng camera chất lượng hơn, nhiều tính năng tiện ích hơn.', 'images/37.jpg', 'Việt Nam', '2017-12-26 10:00:00', 1234, 0),
 (38, 'Điện thoại Sony Xperia XA1 Ultra', 1, 4, 8490000, 200, 'Kế nhiệm sự thành công của phablet không viền Sony Xperia XA Ultra thì Sony giới thiệu phiên bản XA1 Ultra với nhiều cải tiến đáng giá.', 'images/38.jpg', 'Việt Nam', '2017-12-26 10:00:00', 1234, 0),
 (39, 'Điện thoại Sony Xperia XA1 Ultra Pink', 1, 3, 7490000, 200, 'Sau một thời gian xuất hiện tại Việt Nam và nhận được nhiều sự quan tâm từ người dùng thì mới đây Sony đã tung ra phiên bản màu hồng cho chiếc Sony Xperia XA1 Ultra để phục vụ riêng cho \"phái đẹp\".', 'images/39.jpg', 'Việt Nam', '2017-12-26 10:00:00', 1234, 0),
 (40, 'Điện thoại Sony Xperia X', 1, 3, 7490000, 200, 'Sony vừa giới thiệu dòng sản phẩm X Serie mới của hãng trong năm 2016 tại triển lãm MWC. Xperia X là chiếc smartphone tầm trung mới với nhiều điểm nhấn đáng chú ý.', 'images/40.jpg', 'Việt Nam', '2017-12-26 10:00:00', 1234, 0),
-(41, 'Máy tính bảng Samsung Galaxy Book', 3, 1, 19990000, 400, 'Samsung Galaxy Book 10.6 inch là mẫu tablet 2 trong 1 chạy trên nền tảng Windows 10 nhưng vẫn sở hữu cho mình cây bút Spen thần thánh.', 'images/41.jpg', 'Việt Nam', '0000-00-00 00:00:00', 56, 0),
-(42, 'Máy tính bảng Samsung Galaxy Tab', 3, 1, 7990000, 100, 'Tiếp nối sự thành công của chiếc Samsung Galaxy Tab A thì mới đây Samsung đã giới thiệu phiên bản cải tiến là chiếc Galaxy Tab A6 10.1 với nhiều nâng cấp đáng giá về cấu hình và thiết kế.', 'images/42.jpg', 'Việt Nam', '2017-12-26 10:00:00', 54, 0),
-(43, 'Máy tính bảng Samsung Galaxy Tab A', 3, 1, 6490000, 100, 'Samsung Galaxy Tab A 8.0 (2017) mới có màn hình tỉ lệ 4:3 với không gian hiển thị rộng thông minh cho người dùng.', 'images/43.jpg', 'Việt Nam', '2017-12-26 10:00:00', 64, 0),
-(44, 'Máy tính bảng Samsung Galaxy Tab E', 3, 1, 4490000, 100, 'Samsung Galaxy Tab E 9.6 là một sự lựa chọn cho bạn thích một chiếc máy có màn hình lớn để giải trí thoải mái hơn nhưng cấu hình không quá thấp.', 'images/44.jpg', 'Việt Nam', '2017-12-26 10:00:00', 94, 0),
-(45, 'Máy tính bảng Samsung Galaxy Tab', 3, 1, 3590000, 100, 'Samsung Galaxy Tab A6 7.0 với thiết kế vẫn mang vẻ truyền thống và cấu hình tốt, khả năng hiển thị cải thiện, cùng kết nối 4G.', 'images/45.jpg', 'Việt Nam', '2017-12-26 10:00:00', 1434, 0),
-(46, 'Máy tính bảng iPad Pro 10.5', 3, 3, 19990000, 400, 'Apple vẫn giữ ngôn ngữ thiết kế từ xa xưa tới nay, nên phiên bản 10.5 inch cũng không có gì khác lắm với những người tiền nhiệm còn lại. Tuy không mới nhưng đây vẫn là một thiết kế vượt thời gian và rất sang trọng.', 'images/46.jpg', 'Việt Nam', '2017-12-26 10:00:00', 1434, 0),
-(47, 'Máy tính bảng iPad Pro 10.5 inch', 3, 3, 16990000, 400, 'iPad Pro 10.5 inch Wifi 64GB (2017) với kích thước màn hình nhỏ hơn, viền màn hình siêu mỏng cùng hiệu năng mạnh mẽ sẽ đáp ứng tốt cho bạn trong mọi nhu cầu sử dụng hằng ngày.', 'images/47.jpg', 'Việt Nam', '2017-12-26 10:00:00', 1434, 0),
-(48, 'Máy tính bảng iPad Wifi Cellular', 3, 3, 12990000, 400, 'Dòng máy tính bảng iPad Wifi Cellular 32GB (2017) mới của Apple sở hữu cho mình cấu hình mạnh mẽ cùng mức giá bán rất hấp dẫn.', 'images/48.jpg', 'Việt Nam', '2017-12-26 10:00:00', 1434, 0),
+(41, 'Máy tính bảng Samsung Galaxy Book 10.6 inch', 3, 1, 19990000, 400, 'Samsung Galaxy Book 10.6 inch là mẫu tablet 2 trong 1 chạy trên nền tảng Windows 10 nhưng vẫn sở hữu cho mình cây bút Spen thần thánh.', 'images/41.jpg', 'Việt Nam', '0000-00-00 00:00:00', 56, 0),
+(42, 'Máy tính bảng Samsung Galaxy Tab A6 10.1 Spen', 3, 1, 7990000, 100, 'Tiếp nối sự thành công của chiếc Samsung Galaxy Tab A thì mới đây Samsung đã giới thiệu phiên bản cải tiến là chiếc Galaxy Tab A6 10.1 với nhiều nâng cấp đáng giá về cấu hình và thiết kế.', 'images/42.jpg', 'Việt Nam', '2017-12-26 10:00:00', 54, 0),
+(43, 'Máy tính bảng Samsung Galaxy Tab A 8.0 (2017)', 3, 1, 6490000, 100, 'Samsung Galaxy Tab A 8.0 (2017) mới có màn hình tỉ lệ 4:3 với không gian hiển thị rộng thông minh cho người dùng.', 'images/43.jpg', 'Việt Nam', '2017-12-26 10:00:00', 64, 0),
+(44, 'Máy tính bảng Samsung Galaxy Tab E 9.6 (SM-T561)', 3, 1, 4490000, 100, 'Samsung Galaxy Tab E 9.6 là một sự lựa chọn cho bạn thích một chiếc máy có màn hình lớn để giải trí thoải mái hơn nhưng cấu hình không quá thấp.', 'images/44.jpg', 'Việt Nam', '2017-12-26 10:00:00', 94, 0),
+(45, 'Máy tính bảng Samsung Galaxy Tab A6 7.0\"', 3, 1, 3590000, 100, 'Samsung Galaxy Tab A6 7.0 với thiết kế vẫn mang vẻ truyền thống và cấu hình tốt, khả năng hiển thị cải thiện, cùng kết nối 4G.', 'images/45.jpg', 'Việt Nam', '2017-12-26 10:00:00', 1434, 0),
+(46, 'Máy tính bảng iPad Pro 10.5 inch Wifi Cellular 64GB (2017)', 3, 3, 19990000, 400, 'Apple vẫn giữ ngôn ngữ thiết kế từ xa xưa tới nay, nên phiên bản 10.5 inch cũng không có gì khác lắm với những người tiền nhiệm còn lại. Tuy không mới nhưng đây vẫn là một thiết kế vượt thời gian và rất sang trọng.', 'images/46.jpg', 'Việt Nam', '2017-12-26 10:00:00', 1434, 0),
+(47, 'Máy tính bảng iPad Pro 10.5 inch Wifi 64GB (2017)', 3, 3, 16990000, 400, 'iPad Pro 10.5 inch Wifi 64GB (2017) với kích thước màn hình nhỏ hơn, viền màn hình siêu mỏng cùng hiệu năng mạnh mẽ sẽ đáp ứng tốt cho bạn trong mọi nhu cầu sử dụng hằng ngày.', 'images/47.jpg', 'Việt Nam', '2017-12-26 10:00:00', 1434, 0),
+(48, 'Máy tính bảng iPad Wifi Cellular 32GB (2017)', 3, 3, 12990000, 400, 'Dòng máy tính bảng iPad Wifi Cellular 32GB (2017) mới của Apple sở hữu cho mình cấu hình mạnh mẽ cùng mức giá bán rất hấp dẫn.', 'images/48.jpg', 'Việt Nam', '2017-12-26 10:00:00', 1434, 0),
 (49, 'Máy tính bảng iPad Mini 4 Wifi 128GB', 3, 3, 10990000, 400, 'iPad Mini 4 Wifi 128GB cho bạn thêm sự lựa chọn với bộ nhớ trong dung lượng lớn thoải mái cài đặt game và ứng dụng.', 'images/49.jpg', 'Việt Nam', '2017-12-26 10:00:00', 1434, 0),
 (50, 'Máy tính bảng iPad Wifi 32GB (2017)', 3, 3, 8990000, 400, 'iPad Wifi 32GB (2017) là một bản nâng cấp nhẹ của chiếc iPad Air 2 đã ra mắt từ năm 2014 với một số thay đổi về ngoại hình và cấu hình được nâng cấp mạnh mẽ hơn.', 'images/50.jpg', 'Việt Nam', '2017-12-26 10:00:00', 1434, 0),
+(51, 'DELL 15.6″ dòng Inspiron 5570', 2, 5, 15000000, 100, 'Dell inspiron 15 là dòng laptop thời trang cao cấp trong series 5000 của Dell với điểm nổi bật là thiết kế nhôm nguyên khối mỏng nhẹ cực kỳ sang trọng. Điểm xuyến giữa phần nắp màn hình là logo Dell màu đen sang trọng, bàn phím và touchpad đều được viền một lớp khung đánh bóng. Inspiron 5570 mang phong cách hiện đại với cấu hình mạnh mẽ với trọng lượng không quá 2kg. Đây được coi là chiếc máy tính lí tưởng cho các doanh nhân hoặc người dùng thường xuyên di chuyển. Chiếc máy cho âm thanh chất lượng cao bằng công nghệ Waves MaxxAudio® của Dell ', 'images/Dell/1.jpg', 'Việt Nam', NULL, 10, 5),
 (52, 'DELL 15.6 inch dòng INSPIRON 5577', 2, 5, 18890000, 100, 'Dell N5577 sở hữu một vẻ ngoài đặc trưng của dòng laptop Gaming với tông màu đen chủ đạo kết hợp cùng các đường viền màu đỏ nổi bật và rất nhiều quạt tản nhiệt trên thân máy tạo nên một phong cách rất riêng. Máy được hoàn thiện bằng chất liệu nhựa, mặt lưng được làm ở dạng sần vừa toát lên sự sang trọng vừa cho người dùng cảm giác cầm chắc chắn hơn.', 'images/Dell/2.jpg', 'Việt Nam', NULL, 6, 6),
 (53, 'DELL 15 inch dòng XPS 2017 -9560', 2, 5, 40990000, 100, 'XPS 15 9560 là phiên bản mới nhất trong dòng máy tính giải trí di động XPS với thiết kế hiện đại, màn hình cảm ứng độ phân giải FHD cùng cấu hình phần cứng mạnh. Máy có thiết kế tinh tế, kiểu dáng mỏng nhẹ cùng chất liệu sợi carbon và hợp kim nhôm nên máy khá nhẹ đồng thời vẫn tạo được sự chắc chắn, độ bền cao. Chiếc máy cho âm thanh chất lượng cao bằng công nghệ Waves MaxxAudio® Pro của Del', 'images/Dell/3.jpg', 'Việt Nam', NULL, 7, 7),
 (54, 'DELL 17.3 inch dòng New Alienware 17', 2, 5, 41790000, 100, 'New Alienware 17 là phiên bản mới nhất trong dòng máy tính Gaming của dell với thiết kế hiện đại, màn hình cảm ứng độ phân giải FHD cùng cấu hình phần cứng cực mạnh. Máy có thiết kế tinh tế, kiểu dáng cực pro cùng chất liệu sợi carbon và hợp kim nhôm nên máy khá nhẹ đồng thời vẫn tạo được sự chắc chắn, độ bền cao. Chiếc máy cho âm thanh chất lượng cao bằng công nghệ Waves MaxxAudio® Pro của Dell', 'images/Dell/4.jpg', 'Việt Nam', NULL, 8, 8),
@@ -114,43 +235,68 @@ INSERT INTO `san_pham` (`id`, `tensp`, `loai`, `id_nsx`, `gia`, `soluong`, `mota
 (65, 'HP 13.3 inch dòng ENVY', 2, 6, 24490000, NULL, 'Khoác lên mình lớp vỏ hợp vàng ánh kim sang trọng để hiện diện nổi bật và thật khác biệt. Hình thức thanh gọn nhưng công lực thật đáng nể với pin hoạt động bền bỉ lên đến 10 tiếng, cho bạn tha hồ sử dụng không ngơi nghỉ. ', 'images/HP/18.jpg', NULL, NULL, 5, 5),
 (66, 'Acer Aspire ES1 432(Màu Đen)', 2, 7, 6290000, NULL, 'Acer Aspire ES1 432 C5J2 N3350 mang lại hiệu năng sử dụng đơn giản để học tập hay giải trí cho bạn.', 'images/Acer/24.jpg', NULL, NULL, 5, 5),
 (67, 'Acer ES1 533 N4200(Màu Đen)', 2, 7, 7490000, NULL, 'Acer ES1 533 N4200 mang lại hiệu năng sử dụng đơn giản để học tập hay giải trí cho bạn.', 'images/Acer/26.jpg', NULL, NULL, 5, 5),
-(68, 'Acer Aspire E5 475 2017', 2, 7, 8690000, NULL, 'Laptop Acer Aspire E5 475 33WT i3 6006U là sự lựa chọn đáng giá với cấu hình tốt so với nhiều đối thủ khác trong cùng phân khúc.', 'images/Acer/27.jpg', NULL, NULL, 5, 5),
+(68, 'Acer Aspire E5 475 33WT i3 6006U', 2, 7, 8690000, NULL, 'Laptop Acer Aspire E5 475 33WT i3 6006U là sự lựa chọn đáng giá với cấu hình tốt so với nhiều đối thủ khác trong cùng phân khúc.', 'images/Acer/27.jpg', NULL, NULL, 5, 5),
 (69, 'Acer Aspire E5 575G 53EC i5 7200U', 2, 7, 10590000, NULL, 'Acer Aspire E5 575G 53EC i5 7200U là sản phẩm thiết kế đơn giản, gọn nhẹ. Với cấu hình core i5 Kabylake bổ sung thêm sức mạnh, hiệu suất làm việc của máy.', 'images/Acer/28.jpg', NULL, NULL, 5, 5),
-(70, 'Acer Swift SF314 32EX i3 7100U', 2, 7, 21000000, NULL, 'Laptop Acer Swift SF314 32EX là một sản phẩm có thiết kế sang trọng với vỏ kim loại chắc chắn, bảo mật vân tay, cùng màn hình Full HD sắc nét.', 'images/Apple/1.jpg', NULL, NULL, 5, 5),
-(71, 'Laptop Apple Macbook Air', 2, 3, 23990000, 200, 'Macbook Air MQD32SA/A i5 5350U với thiết kế vỏ nhôm nguyên khối Unibody rất đẹp, chắc chắn và sang trọng. Máy siêu mỏng và siêu nhẹ, hiệu năng ổn định mượt mà, thời lượng pin cực lâu, phục vụ tốt cho nhu cầu làm việc lẫn giải trí.', 'images/Apple/1.jpg', 'Việt Nam', '2017-12-26 03:00:00', 1234, 0),
-(72, 'Laptop Apple Macbook Pro', 2, 3, 33990000, 200, 'Apple Macbook Pro MPXR2SA/A i5 là dòng sản phẩm cao cấp với thiết kế kim loại nguyên khối, chip i5 thế hệ thứ 7 và dùng ổ SSD dung lượng 128 GB mang đến sự bền bỉ và mạnh mẽ khi sử dụng.', 'images/Apple/2.jpg', 'Việt Nam', '2017-12-26 03:00:00', 1234, 0),
-(73, 'Laptop Apple Macbook 12\" MMGM2', 2, 3, 36990000, 200, 'Apple Macbook 12 inch MMGM2 là phiên bản 2016 được nâng cấp đôi chút so với bản 2015, có RAM lớn, ổ SSD tốc độ cao, chip xử lý mới và tốt.', 'images/Apple/3.jpg', 'Việt Nam', '2017-12-26 03:00:00', 1234, 0),
-(74, 'Laptop Apple Macbook 12\" MLHF2', 2, 3, 36990000, 200, 'Vẫn duy trì thiết kế cực kỳ quyến rũ của mình Apple Macbook 12 inch năm 2016 được cải tiến thêm về hiệu năng với chip xử lý Core M của Intel đem đến hiệu năng vượt trội hơn.', 'images/Apple/4.jpg', 'Việt Nam', '2017-12-26 03:00:00', 1234, 0),
-(75, 'Laptop Apple Macbook Pro Touch', 2, 3, 56990000, 200, 'MacBook Pro 2016 là “khủng long xinh đẹp” trong thế giới laptop, đặc biệt là sự xuất hiện của thanh Touch Bar – là một dải cảm ứng cho phép truy cập nhanh công cụ. ', 'images/Apple/5.jpg', 'Việt Nam', '2017-12-26 03:00:00', 1234, 0);
+(70, 'Acer Swift SF314 32EX i3 7100U', 2, 7, 21000000, NULL, 'Laptop Acer Swift SF314 32EX là một sản phẩm có thiết kế sang trọng với vỏ kim loại chắc chắn, bảo mật vân tay, cùng màn hình Full HD sắc nét.', 'images/Acer/29.jpg', NULL, NULL, 5, 5),
+(71, 'Laptop Apple Macbook Air MQD32SA/A i5 1.8GHz/8GB/128GB (2017)', 2, 3, 23990000, 200, 'Macbook Air MQD32SA/A i5 5350U với thiết kế vỏ nhôm nguyên khối Unibody rất đẹp, chắc chắn và sang trọng. Máy siêu mỏng và siêu nhẹ, hiệu năng ổn định mượt mà, thời lượng pin cực lâu, phục vụ tốt cho nhu cầu làm việc lẫn giải trí.', 'images/Apple/.jpg', 'Việt Nam', '2017-12-26 03:00:00', 1234, 0),
+(72, 'Laptop Apple Macbook Pro MPXR2SA/A i5 2.3GHz/8GB/128GB (2017)', 2, 3, 33990000, 200, 'Apple Macbook Pro MPXR2SA/A i5 là dòng sản phẩm cao cấp với thiết kế kim loại nguyên khối, chip i5 thế hệ thứ 7 và dùng ổ SSD dung lượng 128 GB mang đến sự bền bỉ và mạnh mẽ khi sử dụng.', 'images/Apple/2.jpg', 'Việt Nam', '2017-12-26 03:00:00', 1234, 0),
+(73, 'Laptop Apple Macbook 12\" MMGM2 Core M 1.2GHz/8GB/512GB (2016)', 2, 3, 36990000, 200, 'Apple Macbook 12 inch MMGM2 là phiên bản 2016 được nâng cấp đôi chút so với bản 2015, có RAM lớn, ổ SSD tốc độ cao, chip xử lý mới và tốt.', 'images/Apple/3.jpg', 'Việt Nam', '2017-12-26 03:00:00', 1234, 0),
+(74, 'Laptop Apple Macbook 12\" MLHF2 Core M 1.2GHz/8GB/512GB (2016)', 2, 3, 36990000, 200, 'Vẫn duy trì thiết kế cực kỳ quyến rũ của mình Apple Macbook 12 inch năm 2016 được cải tiến thêm về hiệu năng với chip xử lý Core M của Intel đem đến hiệu năng vượt trội hơn.', 'images/Apple/4.jpg', 'Việt Nam', '2017-12-26 03:00:00', 1234, 0),
+(75, 'Laptop Apple Macbook Pro Touch MLH32SA/A i7 2.6GHz/16GB/256GB (2016)', 2, 3, 56990000, 200, 'MacBook Pro 2016 là “khủng long xinh đẹp” trong thế giới laptop, đặc biệt là sự xuất hiện của thanh Touch Bar – là một dải cảm ứng cho phép truy cập nhanh công cụ. ', 'images/Apple/5.jpg', 'Việt Nam', '2017-12-26 03:00:00', 1234, 0);
+
+-- --------------------------------------------------------
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `fullname` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `type` int(255) DEFAULT NULL,
+  `phone` varchar(16) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `fullname`, `email`, `password`, `type`, `phone`) VALUES
+(1, 'admin', 'admin@gmailcom', '$2y$11$hQSVhxhIWPJz91GMB2FGie7Yjt9hpTDN8aAOZosb7ns8JmSGxkJe', 1, NULL),
+(2, 'Khoa huynh', 'yumiling1001@gmailcom', '$2y$11$hQSVhxhIWPJz91GMB2FGie7Yjt9hpTDN8aAOZosb7ns8JmSGxkJe', NULL, NULL),
+(3, 'khanh', 'khanhthangngulol@gmail.com', '$2y$10$gP0faF7xtpIeurNtCw.JPeSVTMWrfAjeh7z/u.WHM7j/UiE3ecdPW', NULL, '0'),
+(4, 'khanhvo1', 'khanhthangngulol1@gmail.com', '$2y$10$Zs3586jvp5BbTxKjcMly8.y0.TtcjOa/mPDa0hzmpaE1AtUI/hwcS', NULL, '01649502951');
+
+--
+-- Constraints for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `san_pham`
+-- Constraints for table `chi_tiet_don_hang`
 --
-ALTER TABLE `san_pham`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `loai` (`loai`),
-  ADD KEY `id_nsx` (`id_nsx`);
+ALTER TABLE `chi_tiet_don_hang`
+  ADD CONSTRAINT `chi_tiet_don_hang_ibfk_1` FOREIGN KEY (`id_donhang`) REFERENCES `don_hang` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `chi_tiet_don_hang_ibfk_2` FOREIGN KEY (`id_sanpham`) REFERENCES `san_pham` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- Constraints for table `don_hang`
 --
+ALTER TABLE `don_hang`
+  ADD CONSTRAINT `don_hang_ibfk_1` FOREIGN KEY (`id_nguoidung`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- AUTO_INCREMENT cho bảng `san_pham`
+-- Constraints for table `gio_hang`
 --
-ALTER TABLE `san_pham`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+ALTER TABLE `gio_hang`
+  ADD CONSTRAINT `gio_hang_ibfk_1` FOREIGN KEY (`id_nguoidung`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `gio_hang_ibfk_2` FOREIGN KEY (`id_sanpham`) REFERENCES `san_pham` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Các ràng buộc cho các bảng đã đổ
---
-
---
--- Các ràng buộc cho bảng `san_pham`
+-- Constraints for table `san_pham`
 --
 ALTER TABLE `san_pham`
   ADD CONSTRAINT `san_pham_ibfk_1` FOREIGN KEY (`id_nsx`) REFERENCES `nha_san_xuat` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
