@@ -82,10 +82,18 @@ function selectNhaSanXuat()
 function selectTheoLoai($id)
 {	
   global $db;
-  $stmt = $db->prepare("SELECT * FROM san_pham  WHERE loai = ?");
+  $stmt = $db->prepare("SELECT * FROM san_pham  WHERE loai = $id");
   $stmt->execute(array($id));
   $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
   return $posts;
+}
+function selectTheoLoaiLimit($id,$offset,$limit)
+{
+	global $db;
+	$stmt = $db->prepare("SELECT * from san_pham WHERE loai =  $id LIMIT $offset,$limit");
+	$stmt->execute(array($id,$offset,$limit));
+	$posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	return $posts;
 }
 function selectTheoNSX($id)
 {	
@@ -94,6 +102,14 @@ function selectTheoNSX($id)
   $stmt->execute(array($id));
   $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
   return $posts;
+}
+function selectTheoNSXLimit($id,$offset,$limit)
+{	
+  	global $db;
+	$stmt = $db->prepare("SELECT * from san_pham WHERE id_nsx =  $id LIMIT $offset,$limit");
+	$stmt->execute(array($id,$offset,$limit));
+	$posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	return $posts;
 }
 function ChiTietSanPham($id)
 {	
