@@ -9,7 +9,32 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
   </head>
   <body>
-    <div id="header">
+	<?php if ($typeUser == 1) : ?>
+	<div id="header">
+      <div id="header_margin">
+      <div id="logo">
+          <img src="images/logo.png" alt="Logo">
+      </div>
+      </div>
+    </div>
+    <div id="slider_menu">
+        <div id ="slider_menu_margin" >
+          <div id="menu">
+              <ul>
+                <li><a href="admin.php" title="">Trang chủ quản lý</a></li>
+                <li><a href="quan_ly_san_pham.php">Quản lý sản phẩm</a></li>
+				<li><a href="quan_ly_don_hang.php">Quản lý đơn hàng</a></li>	
+				<li class="nav-item">
+				  <a class="nav-link" href="logout.php">Đăng xuất</a>
+				</li>				
+			</ul>
+          </div>
+          <div id="slider">
+          </div>
+        </div>
+    </div>
+		<?php else : ?>
+ <div id="header">
       <div id="header_margin">
       <div id="logo">
           <img src="images/logo.png" alt="Logo">
@@ -61,4 +86,4 @@
           </div>
         </div>
     </div>
-  </body>
+<?php endif; ?>

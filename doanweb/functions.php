@@ -177,6 +177,15 @@ function selectLichSuGioHangTheoID($id){
   $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
   return $posts;
 }
+
+function oderGioHang($id_nguoidung) {
+  global $db;
+  $stmt = $db->prepare("UPDATE gio_hang SET tinhtrang=1 WHERE id_nguoidung = ?");
+  $stmt->execute(array($id_nguoidung));
+  return $db;
+}
+
+//phần của addmin
 function deleteUser($id)
 {	
   global $db;
@@ -192,24 +201,67 @@ function selectAllUser()
   $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
   return $posts;
 }
-function deleteDonHangUser($id)
+function xoaDonHangUser($id)
 {	
   global $db;
-	$stmt = $db->prepare("DELETE from donhang where idkhachhang = $id");
+	$stmt = $db->prepare("DELETE from don_hang where id_sanpham = $id");
+	$stmt->execute(array($id));
+  return $db;
+}
+function xoaSanPham($id)
+{	
+  global $db;
+	$stmt = $db->prepare("DELETE from san_pham where id = $id");
 	$stmt->execute(array($id));
   return $db;
 }
 function selectDonHangGanDay()
 {
 	global $db;
-	$stmt = $db->prepare("SELECT * from donhang order by create_at desc limit 2");
+	$stmt = $db->prepare("SELECT * from don_hang dh join chi_tiet_don_hang c on dh.id = c.id_donhang order by dh.id desc");
 	$stmt->execute();
 	$posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	return $posts;
 }
-function oderGioHang($id_nguoidung) {
-  global $db;
-  $stmt = $db->prepare("UPDATE gio_hang SET tinhtrang=1 WHERE id_nguoidung = ?");
-  $stmt->execute(array($id_nguoidung));
-  return $db;
+
+function selectChiTietDonHang()
+{
+	global $db;
+	$stmt = $db->prepare("SELECT * from don_hang ");
+	$stmt->execute();
+	$posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	return $posts;
+}
+
+function findSanPhamById($id_sp)
+{
+	global $db;
+	$stmt = $db->prepare("SELECT * from san_pham where id = $id_sp");
+	$stmt->execute(array($id_sp));
+	$posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	return $posts;
+}
+function selectAllSanPham()
+{
+	global $db;
+	$stmt = $db->prepare("SELECT * from san_pham");
+	$stmt->execute();
+	$posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	return $posts;
+}
+function selectSanPhamLimit($offset,$limit)
+{
+	global $db;
+	$stmt = $db->prepare("SELECT * from san_pham LIMIT $offset,$limit");
+	$stmt->execute(array($offset,$limit));
+	$posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	return $posts;
+}
+function findDonHangById($id_donhang)
+{
+	global $db;
+	$stmt = $db->prepare("SELECT * from don_hang where id = $id_donhang");
+	$stmt->execute(array($id_donhang));
+	$posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	return $posts;
 }

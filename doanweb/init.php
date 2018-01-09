@@ -10,6 +10,7 @@ $page = basename($_SERVER['SCRIPT_NAME'], '.php');
 $db = new PDO('mysql:host=localhost;dbname=ban_hang;charset=utf8', 'root', '');
 // Kiểm tra thông tin người dùng
 $currentUser = null;
+$typeUser = null;
 require_once 'functions.php';
 if (isset($_SESSION['userId'])) {
   $currentUser = findUserById($_SESSION['userId']);
