@@ -172,7 +172,7 @@ function selectAllSanPhamXemNhieu()
 }
 function selectLichSuGioHangTheoID($id){
   global $db;
-  $stmt = $db->prepare("SELECT san_pham.id,san_pham.tensp,san_pham.gia,san_pham.image, gio_hang.soluong FROM gio_hang, san_pham WHERE gio_hang.id_sanpham=san_pham.id AND gio_hang.id_nguoidung= ? AND gio_hang.tinhtrang= 1");
+  $stmt = $db->prepare("SELECT san_pham.id,san_pham.tensp,san_pham.gia,san_pham.image, gio_hang.soluong ,gio_hang.tinhtrangdonhang FROM gio_hang, san_pham WHERE gio_hang.id_sanpham=san_pham.id AND gio_hang.id_nguoidung= ? AND gio_hang.tinhtrang= 1");
   $stmt->execute(array($id));
   $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
   return $posts;

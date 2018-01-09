@@ -54,7 +54,11 @@
                         <ul>
                             <li>
                                 <a><img src="<?php echo $row['image'] ?>" alt="TenSanPham" /></a>
-                                <h5><?php echo $row['tensp'] ?></h5>
+                                <?php if($row['tinhtrangdonhang'] == 1) : ?>
+                                    <h5 style=" color: mediumseagreen; "><?php echo $row['tensp'] ?></h5>
+                                    <?php else: ?>
+                                        <h5 style=" color: red; "><?php echo $row['tensp'] ?></h5>
+                                <?php endif ?>
                                 <p><?php echo  number_format($row['gia']).' VNĐ<br>' ?></p>
                              </li>
                         </ul>
